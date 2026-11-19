@@ -1,11 +1,20 @@
-# DECK.MONOLITH — Brutalist Architectural Presentation & AI Blueprint Archive
+# DECK.MONOLITH — Presentation Archive & OOXML Morph Blueprints (WIP Dev Build)
 
-Total curated `.pptx` presentation systems: 1060
+Total cataloged `.pptx` presentations: 1060 (`51` flagship/curated `.pptx` + previews tracked directly in Git; remaining scraped binaries excluded via `.gitignore`).
+Status: Early active development (`WIP`) — heuristic layout expansion & Pillow previews still have rough edges.
 
-## AI Endpoints (Zero MCP Required)
-- `GET /api/decks.json` — Complete JSON catalog with design systems, categories, industries, color tokens, typography pairings, Morph transition specs, slide previews, and native `.pptx` URLs.
-- `GET /pptx/<slug>.pptx` — Native, editable OOXML `.pptx` file.
-- `GET /previews/<slug>/slide_01.png` — Rendered 16:9 PNG keyframe previews per deck.
+## AI Endpoints & Agent Resources (Zero MCP Required)
+- `GET /SKILL.md` (or `./SKILL.md` in repo) — Drop-in presentation engineering skill with OOXML Morph rules & 16-system palette table.
+- `GET /README.md` (or `./README.md` in repo) — Full architecture breakdown, coordinate math, and known OpenXML/PowerPoint COM traps.
+- `GET /api/decks.json` — Complete JSON catalog (`1,060` decks) with `category`, `industry`, `designFamily`, `colors`, `fonts`, `slidesCount`, `avgShapesPerSlide`, `morphSlides`, `pairedMorphSlides`, `blueprintSummary`, and direct `.pptx` paths.
+- `GET /pptx/<slug>.pptx` — Downloadable native OOXML `.pptx` file.
+- `GET /previews/<slug>/slide_01.png` — Rendered 16:9 PNG slide preview.
+
+## Core OOXML Morph Protocol for Generating Better `.pptx` Files
+1. Widescreen `16:9` coordinate space: `33.87 x 19.05 cm` (`12192000 x 6858000 EMU`).
+2. Attach `<p159:morph option="byObject"/>` via `<mc:AlternateContent>` inside `<p:transition>`.
+3. Share identical `!!`-prefixed shape names (`!!actor-title`, `!!actor-cover-art`, `!!scene-rule`, `!!actor-card-0`) across consecutive slides for object-level interpolation.
+4. Preserve natural image aspect ratios (`safe_pic_box`), unescape `&amp;` entities, and never embed unmapped `.json` files inside `.pptx` ZIP archives.
 
 ## Categories
 Pitch, Guideline, Report, Talks, Portfolio, Marketing, Sales, Strategy, Proposal, Other
