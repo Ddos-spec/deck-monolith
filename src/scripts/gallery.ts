@@ -262,7 +262,7 @@ export function initDeckGallery(decks: DeckItem[]): void {
       localStorage.setItem("deck-vault-theme", isObsidian ? "obsidian" : "limestone");
     } catch {}
     syncThemeUi();
-    showToast(isObsidian ? "Theme: Obsidian Monolith" : "Theme: Raw Limestone Concrete");
+    showToast(isObsidian ? "Theme: Obsidian Ink" : "Theme: Warm Limestone");
   });
 
   // Single-rAF Telemetry Cursor & Smooth Card 3D Tilt
@@ -276,7 +276,7 @@ export function initDeckGallery(decks: DeckItem[]): void {
     if (hudCursorXy) {
       const px = String(Math.round(pendingPtrX)).padStart(4, "0");
       const py = String(Math.round(pendingPtrY)).padStart(4, "0");
-      hudCursorXy.textContent = `POS ${px}·${py}`;
+      hudCursorXy.textContent = `X ${px} / Y ${py}`;
     }
     if (awwwardsCursor) {
       awwwardsCursor.style.transform = `translate3d(${pendingPtrX}px, ${pendingPtrY}px, 0) translate(-50%, -50%)`;

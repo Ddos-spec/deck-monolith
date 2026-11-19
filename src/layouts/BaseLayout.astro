@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "DECK.MONOLITH — Brutalist Presentation Archive & AI Slide System",
-  description = "Curated collection of 1,058 multi-layered PowerPoint presentations across 29 industries and 16 avant-garde design movements. Live stage preview and AI blueprints.",
+  title = "Deckhouse — Kinetic & Avant-Garde Presentation Archive",
+  description = "Curated archive of editable, multi-layered PowerPoint decks spanning 29 industries with DNA-preserving organic layer deconstruction and native PowerPoint Morph choreography.",
 } = Astro.props;
 ---
 
@@ -18,6 +18,9 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" sizes="32x32" href="/favicon.ico" />
+    <meta name="theme-color" content="#111111" />
     <title>{title}</title>
     <script is:inline>
       try {

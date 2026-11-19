@@ -13,28 +13,30 @@ const { totalDecks, showControls = true } = Astro.props;
     <div class="mx-auto flex h-7 max-w-[1480px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
       <div class="relative flex-1 overflow-hidden">
         <div class="ticker-track gap-8 whitespace-nowrap">
-          <span>MONOLITH // DECK.GALLERY BRUTALIST EDITION</span>
+          <span>DECKHOUSE — KINETIC PRESENTATION ARCHIVE</span>
           <span class="text-[#FF784E]">■</span>
-          <span>{totalDecks} CURATED PRESENTATIONS</span>
+          <span>{totalDecks} CURATED &amp; REMASTERED DECKS</span>
           <span class="text-[#2DD4BF]">■</span>
-          <span>16 AVANT-GARDE SLIDE ARCHITECTURES</span>
+          <span>ORGANIC LAYER DECONSTRUCTION · DNA MORPH</span>
           <span class="text-[#FF784E]">■</span>
-          <span>HUMAN STAGE PREVIEW + AI BLUEPRINT ENGINE</span>
+          <span>HUMAN STAGE SCRUBBER + AI DIRECTOR ENGINE</span>
           <span class="text-[#2DD4BF]">■</span>
-          <span>MONOLITH // DECK.GALLERY BRUTALIST EDITION</span>
+          <span>DECKHOUSE — KINETIC PRESENTATION ARCHIVE</span>
           <span class="text-[#FF784E]">■</span>
-          <span>{totalDecks} CURATED PRESENTATIONS</span>
+          <span>{totalDecks} CURATED &amp; REMASTERED DECKS</span>
           <span class="text-[#2DD4BF]">■</span>
-          <span>16 AVANT-GARDE SLIDE ARCHITECTURES</span>
+          <span>ORGANIC LAYER DECONSTRUCTION · DNA MORPH</span>
         </div>
       </div>
 
       <div class="hidden shrink-0 items-center gap-4 md:flex">
-        <span id="hud-cursor-xy" class="tabular-nums text-zinc-300">POS 0000·0000</span>
+        <span class="text-zinc-400">CURATION · 16 SYSTEMS</span>
+        <span class="text-zinc-600">|</span>
+        <span id="hud-cursor-xy" class="tabular-nums text-zinc-300">X 0000 / Y 0000</span>
         <span class="text-zinc-600">|</span>
         <span class="flex items-center gap-1.5">
           <span class="h-1.5 w-1.5 bg-[#2DD4BF]"></span>
-          <span>ELEV <strong id="hud-scroll-pct" class="text-white tabular-nums">00%</strong></span>
+          <span>READ <strong id="hud-scroll-pct" class="text-white tabular-nums">00%</strong></span>
         </span>
       </div>
     </div>
@@ -43,24 +45,27 @@ const { totalDecks, showControls = true } = Astro.props;
   <!-- Main Structural Masthead -->
   <div class="mx-auto flex h-16 max-w-[1480px] items-center justify-between gap-2 px-3 sm:gap-3 sm:px-6 lg:px-8">
     <a href="/" class="group flex shrink-0 items-center gap-2 sm:gap-3 focus:outline-none">
-      <!-- Bespoke SVG Isometric Brutalist Monolith Emblem -->
-      <div class="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border-2 border-[var(--brut-border-strong)] bg-[var(--brut-elevated)] transition-colors group-hover:bg-[#C22F10] group-hover:text-white">
-        <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M4 20h16" />
-          <path d="M6 20V8l6-4 6 4v12" />
-          <path d="M12 4v16" />
-          <path d="M6 12h12" />
+      <!-- Bespoke Deckhouse Brand Mark (Kinetic Slide Planes + Vermilion Accent) -->
+      <div class="relative flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center border-2 border-[var(--brut-border-strong)] bg-[#111111] shadow-[2px_2px_0_0_var(--brut-border-strong)] transition-transform duration-150 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
+        <svg class="h-full w-full" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <polygon points="10,16 38,16 33,34 10,34" fill="#F4F0E6" fill-opacity="0.22" stroke="#F4F0E6" stroke-width="2.2"/>
+          <polygon points="28,11 36,11 23,53 15,53" fill="#C22F10"/>
+          <polygon points="40,11 46,11 33,53 27,53" fill="#F4F0E6"/>
+          <rect x="33" y="31" width="21" height="17" fill="#111111" stroke="#F4F0E6" stroke-width="2.6"/>
+          <rect x="46" y="36" width="4" height="4" fill="#2DD4BF"/>
         </svg>
       </div>
       <div class="flex min-w-0 flex-col">
         <div class="flex items-center gap-2">
-          <span class="font-display text-sm sm:text-base font-bold tracking-tight uppercase whitespace-nowrap">DECK.MONOLITH</span>
+          <span class="font-display text-sm sm:text-base font-bold tracking-tight uppercase whitespace-nowrap">
+            DECK<span class="text-[#C22F10]">HOUSE</span>
+          </span>
           <span class="hidden border border-[var(--brut-border-strong)] bg-[var(--brut-elevated)] px-1.5 py-0.5 font-mono text-[10px] font-bold md:inline-flex">
             {totalDecks} WORKS
           </span>
         </div>
         <span class="hidden sm:block font-serif-editorial italic text-xs brut-muted leading-none">
-          Brutalist Presentation Archive
+          Kinetic Presentation Archive
         </span>
       </div>
     </a>
@@ -99,7 +104,7 @@ const { totalDecks, showControls = true } = Astro.props;
           <button
             id="theme-toggle-btn"
             type="button"
-            title="Switch Raw Limestone / Obsidian Monolith"
+            title="Toggle Warm Limestone / Obsidian Ink Theme"
             class="brut-btn hidden sm:inline-flex h-10 items-center gap-1.5 px-3 font-mono text-[11px] font-bold uppercase cursor-pointer"
           >
             <span id="theme-toggle-dot" class="h-2.5 w-2.5 border border-[var(--brut-border-strong)] bg-[#111111]"></span>

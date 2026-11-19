@@ -5,8 +5,8 @@ import { DECK_CATEGORIES, DECK_INDUSTRIES, type DeckItem } from "../../lib/deckC
 export const GET: APIRoute = () => {
   const decks = decksData as DeckItem[];
   const payload = {
-    name: "DECK.MONOLITH — Brutalist Presentation Archive",
-    version: "2.0.0",
+    name: "Deckhouse — Kinetic & Avant-Garde Presentation Archive",
+    version: "2.1.0",
     generatedAt: new Date().toISOString(),
     totalDecks: decks.length,
     categories: DECK_CATEGORIES,

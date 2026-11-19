@@ -1,20 +1,28 @@
-# DECK.MONOLITH — Presentation Archive & OOXML Morph Blueprints (WIP Dev Build)
+# Deckhouse — Kinetic & Avant-Garde Presentation Archive (LLM & Agent Guide)
 
-Total cataloged `.pptx` presentations: 1060 (`51` flagship/curated `.pptx` + previews tracked directly in Git; remaining scraped binaries excluded via `.gitignore`).
-Status: Early active development (`WIP`) — heuristic layout expansion & Pillow previews still have rough edges.
+> Status: Early Experimental Build (`v0.2-dev`). Verify outputs with `python studio_engine/ai_slide_director.py audit <file.pptx>` or inspect live slide strips on the site.
 
-## AI Endpoints & Agent Resources (Zero MCP Required)
-- `GET /SKILL.md` (or `./SKILL.md` in repo) — Drop-in presentation engineering skill with OOXML Morph rules & 16-system palette table.
-- `GET /README.md` (or `./README.md` in repo) — Full architecture breakdown, coordinate math, and known OpenXML/PowerPoint COM traps.
-- `GET /api/decks.json` — Complete JSON catalog (`1,060` decks) with `category`, `industry`, `designFamily`, `colors`, `fonts`, `slidesCount`, `avgShapesPerSlide`, `morphSlides`, `pairedMorphSlides`, `blueprintSummary`, and direct `.pptx` paths.
-- `GET /pptx/<slug>.pptx` — Downloadable native OOXML `.pptx` file.
-- `GET /previews/<slug>/slide_01.png` — Rendered 16:9 PNG slide preview.
+Total curated `.pptx` presentation systems: 1060
 
-## Core OOXML Morph Protocol for Generating Better `.pptx` Files
-1. Widescreen `16:9` coordinate space: `33.87 x 19.05 cm` (`12192000 x 6858000 EMU`).
-2. Attach `<p159:morph option="byObject"/>` via `<mc:AlternateContent>` inside `<p:transition>`.
-3. Share identical `!!`-prefixed shape names (`!!actor-title`, `!!actor-cover-art`, `!!scene-rule`, `!!actor-card-0`) across consecutive slides for object-level interpolation.
-4. Preserve natural image aspect ratios (`safe_pic_box`), unescape `&amp;` entities, and never embed unmapped `.json` files inside `.pptx` ZIP archives.
+## Primary Entry Points (Zero MCP Required)
+- Agent Skill Instructions: /SKILL.md
+- Technical README & Organic Layer Deconstruction: /README.md
+- Machine-Readable JSON Catalog: GET /api/decks.json
+- Native Editable OOXML Download: GET /pptx/<slug>.pptx
+- Slide Keyframe PNG Previews: GET /previews/<slug>/slide_01.png
+- Art Director Storyboard & Audit CLI: studio_engine/ai_slide_director.py
+
+## CLI Tools for External AI Agents
+1. Plan an organic DNA-preserving multi-stage storyboard before writing slide XML:
+   python studio_engine/ai_slide_director.py storyboard --title "<Topic>" --category "Pitch" --industry "AI & DeepTech"
+   (Pass --pptx <source.pptx> to extract real color & typography DNA from an existing deck.)
+2. Lint and score any `.pptx` archive (0-100 DNA coherence & Morph scorecard):
+   python studio_engine/ai_slide_director.py audit <path/to/deck.pptx>
+
+## Core Presentation Rules
+1. Fixed 16:9 canvas: 33.87 x 19.05 cm (12192000 x 6858000 EMU), outer safe margins >= 1.4 cm.
+2. Preserve authentic DNA (color palette, monochrome character, typography) across every slide; never clash unrelated themes.
+3. Deconstruct layers organically according to content complexity (no fixed 15-slide quota, no rigid 8-box stencil), pairing persistent shapes with `!!`-prefixed `<p:cNvPr name="!!sXX-layer-YY"/>` attributes and `<p159:morph option="byObject"/>` (`<p:fade/>` fallback).
 
 ## Categories
 Pitch, Guideline, Report, Talks, Portfolio, Marketing, Sales, Strategy, Proposal, Other

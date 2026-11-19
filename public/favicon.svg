@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Brutalist Obsidian Chassis -->
+  <rect x="2" y="2" width="60" height="60" fill="#111111" stroke="#F4F0E6" stroke-width="2"/>
+  <!-- Back Kinetic Slide Plane (Warm Limestone) -->
+  <polygon points="11,16 39,16 34,34 11,34" fill="#F4F0E6" fill-opacity="0.22" stroke="#F4F0E6" stroke-width="2"/>
+  <!-- Signal Vermilion Kinetic Slash Pair (//) -->
+  <polygon points="29,12 37,12 24,52 16,52" fill="#C22F10"/>
+  <polygon points="41,12 47,12 34,52 28,52" fill="#F4F0E6"/>
+  <!-- Foreground Asymmetrical Slide Frame + Teal Registration Dot -->
+  <rect x="33" y="31" width="21" height="17" fill="#111111" stroke="#F4F0E6" stroke-width="2.5"/>
+  <rect x="46" y="36" width="4" height="4" fill="#2DD4BF"/>
+</svg>

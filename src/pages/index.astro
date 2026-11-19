@@ -20,55 +20,53 @@ const categoryCounts = buildCategoryCounts(decks);
 const industryCounts = buildIndustryCounts(decks);
 ---
 
-<BaseLayout title="DECK.MONOLITH — Brutalist Presentation Archive & AI Slide System">
+<BaseLayout title="Deckhouse — Kinetic & Avant-Garde Presentation Archive">
   <Navbar totalDecks={decks.length} />
 
   <main class="mx-auto max-w-[1480px] px-4 py-6 sm:px-6 lg:px-8">
     <!-- Asymmetric Architectural Brutalist Hero Monolith -->
     {featuredDeck && (
       <section class="brut-panel relative mb-8 grid grid-cols-1 gap-6 p-5 sm:p-8 lg:grid-cols-12 overflow-hidden">
-        <!-- Exposed Architectural Isometric SVG Blueprint Watermark -->
+        <!-- Kinetic Layered Slide Planes Geometric Watermark -->
         <svg
           aria-hidden="true"
-          class="pointer-events-none absolute -right-10 -bottom-10 h-64 w-64 opacity-[0.06]"
+          class="pointer-events-none absolute -right-10 -bottom-10 h-64 w-64 opacity-[0.055]"
           viewBox="0 0 200 200"
           fill="none"
           stroke="currentColor"
           stroke-width="1.5"
         >
-          <rect x="20" y="20" width="160" height="160" />
-          <line x1="20" y1="70" x2="180" y2="70" />
-          <line x1="20" y1="130" x2="180" y2="130" />
-          <line x1="80" y1="20" x2="80" y2="180" />
-          <line x1="140" y1="20" x2="140" y2="180" />
-          <circle cx="80" cy="70" r="32" />
+          <rect x="26" y="42" width="118" height="72" />
+          <rect x="54" y="68" width="120" height="74" stroke-dasharray="4 4" />
+          <line x1="26" y1="42" x2="174" y2="142" />
+          <circle cx="114" cy="105" r="28" />
         </svg>
 
-        <!-- Structural Coordinates -->
+        <!-- Editorial Archive Markers -->
         <span aria-hidden="true" class="pointer-events-none absolute left-4 top-2.5 font-mono text-[10px] font-bold brut-muted">
-          [ ELEV. +00.0M // BAY 01 ]
+          [ INDEX · DNA LAYER DECONSTRUCTION ]
         </span>
         <span aria-hidden="true" class="pointer-events-none absolute right-4 bottom-2.5 font-mono text-[10px] font-bold brut-muted">
-          SECTION A-A · 16:9 STAGE
+          16:9 MORPH DECK ARCHIVE
         </span>
 
-        <!-- Left Bay: Manifesto, Dual Human/AI Clarity & Triggers -->
+        <!-- Left Zone: Editorial Thesis, Human Scrubber & AI System Clarity -->
         <div class="relative z-10 flex flex-col justify-between gap-6 pt-3 lg:col-span-6 xl:col-span-7">
           <div>
             <div class="inline-flex items-center gap-2 border border-[var(--brut-border-strong)] bg-[var(--brut-elevated)] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider">
               <span class="h-2 w-2 bg-[#C22F10]"></span>
-              <span>ISSUE NO. 04 — BRUTALIST PRESENTATION ARCHIVE</span>
+              <span>ISSUE 04 · KINETIC PRESENTATION &amp; AI SLIDE ARCHIVE</span>
             </div>
 
             <h1 class="mt-4 font-display text-3xl font-bold leading-[0.98] tracking-tight uppercase sm:text-5xl">
-              RAW STRUCTURE.
+              Beyond Static Slides.
               <span class="block font-serif-editorial italic font-normal lowercase text-[#C22F10] sm:text-6xl mt-1">
-                kinetic slide systems.
+                kinetic presentation systems.
               </span>
             </h1>
 
             <p class="mt-4 max-w-2xl text-sm leading-relaxed brut-muted sm:text-[15px]">
-              An architectural evolution of curated presentation design—housing {decks.length} editable PowerPoint decks across 29 industries and 16 distinct visual movements. Built for humans to inspect live transitions slide-by-slide, and structured for AI agents to extract clean design prompts and OOXML blueprints.
+              An avant-garde presentation archive housing {decks.length} editable, multi-layered PowerPoint decks across 29 industries. Every deck preserves its authentic color &amp; typography DNA while organically deconstructing layers into native Morph motion—built for human inspection and AI slide directors.
             </p>
           </div>
 
