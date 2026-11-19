@@ -1,0 +1,993 @@
+[
+  {
+    "path": "D:\\code\\ppt_studio\\examples_out\\MODNEXUS_Deck.pptx",
+    "slug": "modnexus-global-modding-union",
+    "title": "MODNEXUS — Global Modding Union & Universal Repository",
+    "description": "16-slide Swiss avant-garde kinetic pitch deck featuring orbital Morph dials, climbing roadmaps, and click-reveal pillars.",
+    "category": "Pitch",
+    "industry": "Gaming",
+    "source": "examples_out",
+    "slides": 16,
+    "tags": [
+      "pitch",
+      "gaming",
+      "swiss",
+      "brutalist",
+      "morph",
+      "benchmark"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-the-sun-3d-astronomy.pptx",
+    "slug": "corpus-the-sun-3d-astronomy",
+    "title": "The Sun — Interactive 3D Solar Structure Deck",
+    "description": "Astronomy science presentation embedding native 3D models and Morph transitions to inspect solar layers and heliosphere metrics.",
+    "category": "Talks",
+    "industry": "Aerospace",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "3d-model",
+      "astronomy",
+      "morph",
+      "science",
+      "talk",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-alien-guide-to-earth.pptx",
+    "slug": "corpus-alien-guide-to-earth",
+    "title": "An Alien's Guide to Earth — Survival Handbook",
+    "description": "Playful illustrated onboarding handbook exploring human habits and Earth etiquette with Morph transitions.",
+    "category": "Guideline",
+    "industry": "Media",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "handbook",
+      "guide",
+      "humor",
+      "morph",
+      "editorial",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-officecli-animation-showcase.pptx",
+    "slug": "corpus-officecli-animation-showcase",
+    "title": "OfficeCLI Animation Showcase — Entrance, Exit & Emphasis",
+    "description": "Technical reference deck demonstrating round-trippable OOXML entrance, exit, emphasis, and trigger timing capabilities.",
+    "category": "Other",
+    "industry": "SaaS",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "animations",
+      "ooxml",
+      "reference",
+      "showcase",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-fy24-budget-review.pptx",
+    "slug": "corpus-fy24-budget-review",
+    "title": "FY2024 Strategic Budget Review & Financial Planning",
+    "description": "Corporate finance review analyzing divisional variance, headcount allocation, and quarterly opex discipline.",
+    "category": "Report",
+    "industry": "Enterprise",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "budget",
+      "finance",
+      "report",
+      "morph",
+      "corporate",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-cat-secret-life-report.pptx",
+    "slug": "corpus-cat-secret-life-report",
+    "title": "Secret Life of Cats — Behavioral Field Report",
+    "description": "Playful organic editorial presentation documenting feline behavioral archetypes with Morph storytelling.",
+    "category": "Other",
+    "industry": "Media",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "storytelling",
+      "organic",
+      "morph",
+      "editorial",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-mermaid-diagrams-reference.pptx",
+    "slug": "corpus-mermaid-diagrams-reference",
+    "title": "Mermaid Diagrams — Native Shapes vs. Raster Reference",
+    "description": "23-slide engineering reference comparing native editable OOXML flowcharts against full-fidelity Mermaid diagram renders.",
+    "category": "Other",
+    "industry": "SaaS",
+    "source": "corpus",
+    "slides": 27,
+    "tags": [
+      "diagrams",
+      "mermaid",
+      "architecture",
+      "engineering",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-art-of-design-pillars.pptx",
+    "slug": "corpus-art-of-design-pillars",
+    "title": "The Art of Design — Simplicity, Elegance & Function",
+    "description": "Clean design principles talk outlining core aesthetic pillars for crafting uncluttered digital products.",
+    "category": "Talks",
+    "industry": "Agency",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "design",
+      "principles",
+      "minimal",
+      "talk",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\corpus-nova-platform-launch.pptx",
+    "slug": "corpus-nova-platform-launch",
+    "title": "Nova Platform — Intelligence at Scale Product Launch",
+    "description": "Morph-animated product launch deck introducing Nova's enterprise data intelligence suite.",
+    "category": "Marketing",
+    "industry": "AI",
+    "source": "corpus",
+    "slides": 15,
+    "tags": [
+      "launch",
+      "product",
+      "ai",
+      "morph",
+      "saas",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-bw-brutalist-raw.pptx",
+    "slug": "style-bw-brutalist-raw",
+    "title": "REVOLT — Brutalist Exhibition Portfolio",
+    "description": "Raw black-and-white brutalist art exhibition showcase with stark typographic contrast and Morph shifts.",
+    "category": "Portfolio",
+    "industry": "Media",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "brutalist",
+      "bw",
+      "portfolio",
+      "exhibition",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-bw-mono-line.pptx",
+    "slug": "style-bw-mono-line",
+    "title": "Minimal Line — Executive Strategy Framework",
+    "description": "Restrained monochrome hairline strategy deck designed for consulting and executive briefings.",
+    "category": "Strategy",
+    "industry": "Enterprise",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "monochrome",
+      "minimal",
+      "strategy",
+      "consulting",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-bw-swiss-bauhaus.pptx",
+    "slug": "style-bw-swiss-bauhaus",
+    "title": "Design Thinking — Innovation Workshop 2025",
+    "description": "Swiss Bauhaus workshop deck walking teams through the 5-stage Empathize-to-Test innovation sprint.",
+    "category": "Talks",
+    "industry": "Agency",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "bauhaus",
+      "swiss",
+      "workshop",
+      "design-thinking",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-architectural-plan.pptx",
+    "slug": "style-dark-architectural-plan",
+    "title": "Architectural Plan — Real Estate Development Proposal",
+    "description": "Structured architectural blueprint business plan pairing crisp linework with phased project milestones.",
+    "category": "Proposal",
+    "industry": "Real Estate",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "architecture",
+      "real-estate",
+      "proposal",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-blueprint-grid.pptx",
+    "slug": "style-dark-blueprint-grid",
+    "title": "AI Agent Platform — Engineering Blueprint Launch",
+    "description": "Technical blueprint-grid launch deck showcasing enterprise agent orchestration and 99.95% SLA architecture.",
+    "category": "Marketing",
+    "industry": "AI",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "blueprint",
+      "ai",
+      "agents",
+      "dark",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-circle-digital.pptx",
+    "slug": "style-dark-circle-digital",
+    "title": "Digital Streaming Agency — Creative Capabilities Showcase",
+    "description": "Dark-mode creative agency portfolio featuring circular mask framing and innovation marketing case metrics.",
+    "category": "Portfolio",
+    "industry": "Agency",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "agency",
+      "portfolio",
+      "dark",
+      "digital",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-cosmic-neon.pptx",
+    "slug": "style-dark-cosmic-neon",
+    "title": "Space-Time & Quantum Physics — Science Keynote",
+    "description": "Cosmic neon science talk exploring general relativity and quantum mechanics through luminous dark slides.",
+    "category": "Talks",
+    "industry": "Education",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "science",
+      "physics",
+      "neon",
+      "talk",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-cyber-future.pptx",
+    "slug": "style-dark-cyber-future",
+    "title": "2050 Holographic Era — Future Computing Keynote",
+    "description": "Cyber-futurist keynote examining spatial computing, brain-computer interfaces, and autonomous AI agents.",
+    "category": "Talks",
+    "industry": "AI",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "cyber",
+      "futurism",
+      "keynote",
+      "ai",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-diagonal-cut.pptx",
+    "slug": "style-dark-diagonal-cut",
+    "title": "CUT THROUGH — Industrial Design & Engineering Portfolio",
+    "description": "Rugged diagonal-cut industrial engineering showcase pairing charcoal surfaces with high-voltage amber accents.",
+    "category": "Portfolio",
+    "industry": "Industrial",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "industrial",
+      "engineering",
+      "diagonal",
+      "portfolio",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-editorial-story.pptx",
+    "slug": "style-dark-editorial-story",
+    "title": "VOL.06 Editorial Story — Magazine Brand Narrative",
+    "description": "High-contrast magazine-style brand storytelling deck built around narrative pacing and serif headlines.",
+    "category": "Marketing",
+    "industry": "Media",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "editorial",
+      "magazine",
+      "storytelling",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-investor-pitch.pptx",
+    "slug": "style-dark-investor-pitch",
+    "title": "Innovative Tech — Series A Investor Pitch",
+    "description": "Classic dark investor pitch deck covering problem, algorithmic engine solution, and TAM sizing.",
+    "category": "Pitch",
+    "industry": "SaaS",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "pitch",
+      "investor",
+      "series-a",
+      "dark",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-liquid-flow.pptx",
+    "slug": "style-dark-liquid-flow",
+    "title": "LUXE 2025 — Fashion Visual Identity Upgrade",
+    "description": "Fluid gradient brand guideline detailing color, typography, and packaging touchpoints for luxury retail.",
+    "category": "Guideline",
+    "industry": "Fashion",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "fashion",
+      "luxury",
+      "guideline",
+      "brand",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-luxury-minimal.pptx",
+    "slug": "style-dark-luxury-minimal",
+    "title": "AURA COFFEE — Minimalist Specialty Brand Launch",
+    "description": "Obsidian and gold luxury beverage brand marketing deck emphasizing craft roasting and minimal packaging.",
+    "category": "Marketing",
+    "industry": "Food & Beverage",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "coffee",
+      "luxury",
+      "minimal",
+      "marketing",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-neon-productivity.pptx",
+    "slug": "style-dark-neon-productivity",
+    "title": "Attention Budget — 7-Day Deep Focus Playbook",
+    "description": "Vibrant neon productivity talk breaking down context-switching costs and actionable 7-day focus habits.",
+    "category": "Talks",
+    "industry": "Consumer",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "productivity",
+      "talk",
+      "neon",
+      "habits",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-premium-navy.pptx",
+    "slug": "style-dark-premium-navy",
+    "title": "Annual Strategy Review — Executive Board Deck",
+    "description": "Authoritative navy-and-gold corporate strategy deck structured for annual board alignment.",
+    "category": "Strategy",
+    "industry": "Enterprise",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "navy",
+      "gold",
+      "strategy",
+      "board",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-space-odyssey.pptx",
+    "slug": "style-dark-space-odyssey",
+    "title": "Space Odyssey — History & Future of Orbital Exploration",
+    "description": "Cinematic deep-space educational talk tracing rocket milestones from early telescopes to modern launch.",
+    "category": "Talks",
+    "industry": "Aerospace",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "space",
+      "aerospace",
+      "talk",
+      "odyssey",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-dark-spotlight-stage.pptx",
+    "slug": "style-dark-spotlight-stage",
+    "title": "AI Agent Platform — Theatrical Stage Keynote",
+    "description": "Spotlight-lit product keynote highlighting multimodal perception and 10M+ autonomous agent invocations.",
+    "category": "Marketing",
+    "industry": "AI",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "keynote",
+      "spotlight",
+      "ai",
+      "launch",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-light-bold-type.pptx",
+    "slug": "style-light-bold-type",
+    "title": "MAKE IT BOLD — Design Studio Credentials",
+    "description": "Editorial bold-type agency portfolio showcasing 340+ delivered brand identity and digital projects.",
+    "category": "Portfolio",
+    "industry": "Agency",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "typography",
+      "agency",
+      "portfolio",
+      "light",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-light-isometric-clean.pptx",
+    "slug": "style-light-isometric-clean",
+    "title": "AI Agent Platform — Clean Light SaaS Showcase",
+    "description": "Crisp light-mode SaaS platform presentation highlighting 99.95% SLA and multimodal agent tooling.",
+    "category": "Marketing",
+    "industry": "SaaS",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "light",
+      "saas",
+      "ai",
+      "isometric",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-light-minimal-product.pptx",
+    "slug": "style-light-minimal-product",
+    "title": "MINIMAL 2026 — Hardware Product Sales Showcase",
+    "description": "Clean minimalist product sales deck built for consumer electronics and industrial hardware introductions.",
+    "category": "Sales",
+    "industry": "Hardware",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "hardware",
+      "product",
+      "sales",
+      "minimal",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-light-watercolor-wash.pptx",
+    "slug": "style-light-watercolor-wash",
+    "title": "Human-AI Collaboration — Soft Editorial Talk",
+    "description": "Soft watercolor-wash presentation framing human-agent collaboration with calm editorial pacing.",
+    "category": "Talks",
+    "industry": "AI",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "watercolor",
+      "soft",
+      "ai",
+      "talk",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-mixed-duotone-split.pptx",
+    "slug": "style-mixed-duotone-split",
+    "title": "Form Follows Function — Architecture Practice Portfolio",
+    "description": "Architectural duotone split-screen portfolio highlighting 85 completed builds across 12 countries.",
+    "category": "Portfolio",
+    "industry": "Real Estate",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "architecture",
+      "duotone",
+      "portfolio",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-vivid-candy-stripe.pptx",
+    "slug": "style-vivid-candy-stripe",
+    "title": "Color Your World — Creative Festival 2026",
+    "description": "Vibrant multi-hue festival marketing deck promoting 6 days of international design and color talks.",
+    "category": "Marketing",
+    "industry": "Media",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "festival",
+      "vivid",
+      "marketing",
+      "event",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-vivid-playful-marketing.pptx",
+    "slug": "style-vivid-playful-marketing",
+    "title": "Smart Product Pro — Summer Retail Promo Sales Deck",
+    "description": "High-energy summer consumer electronics campaign deck highlighting 500% promo lift and SKU pricing.",
+    "category": "Sales",
+    "industry": "Ecommerce",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "retail",
+      "promo",
+      "sales",
+      "ecommerce",
+      "vivid",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-warm-brand-refresh.pptx",
+    "slug": "style-warm-brand-refresh",
+    "title": "Brand Refresh 2025 — Visual Identity Guideline",
+    "description": "Warm sand and cobalt brand refresh guideline defining identity pillars and tone of voice.",
+    "category": "Guideline",
+    "industry": "Agency",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "brand-refresh",
+      "guideline",
+      "warm",
+      "agency",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-warm-earth-organic.pptx",
+    "slug": "style-warm-earth-organic",
+    "title": "Sustainable Growth — Supply Chain Impact Report",
+    "description": "Earth-and-sage sustainability report detailing supply-chain waste reduction and circular practices.",
+    "category": "Report",
+    "industry": "Climate",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "sustainability",
+      "climate",
+      "organic",
+      "report",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\style-warm-playful-organic-cats.pptx",
+    "slug": "style-warm-playful-organic-cats",
+    "title": "Playful Organic — Illustrated Narrative Template",
+    "description": "Warm cream organic style reference deck demonstrating character-led visual storytelling and Morph motion.",
+    "category": "Other",
+    "industry": "Media",
+    "source": "reference_style",
+    "slides": 15,
+    "tags": [
+      "playful",
+      "organic",
+      "template",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\proposal-enterprise-cloud-migration.pptx",
+    "slug": "proposal-enterprise-cloud-migration",
+    "title": "Helios Cloud Systems — Core Banking Migration Proposal",
+    "description": "Enterprise technical and commercial proposal for zero-downtime mainframe-to-Kubernetes core banking modernization across 3 availability zones.",
+    "category": "Proposal",
+    "industry": "Enterprise",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "proposal",
+      "enterprise",
+      "cloud",
+      "migration",
+      "banking",
+      "morph",
+      "table",
+      "chart",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\proposal-logistics-autonomous-fleet.pptx",
+    "slug": "proposal-logistics-autonomous-fleet",
+    "title": "Vektor Freight — Autonomous Cold-Chain Fleet Proposal",
+    "description": "Fleet electrification and autonomous yard-to-hub cold-chain modernization proposal for national refrigerated logistics operators.",
+    "category": "Proposal",
+    "industry": "Logistics",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "proposal",
+      "logistics",
+      "cold-chain",
+      "fleet",
+      "automation",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\sales-saas-revenue-engine.pptx",
+    "slug": "sales-saas-revenue-engine",
+    "title": "Kinetix AI — Enterprise Revenue Operations Sales Deck",
+    "description": "B2B SaaS enterprise sales deck demonstrating automated deal-room telemetry, churn prediction, and forecast accuracy for CRO teams.",
+    "category": "Sales",
+    "industry": "SaaS",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "sales",
+      "saas",
+      "revops",
+      "b2b",
+      "enterprise",
+      "pipeline",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\sales-healthcare-diagnostics-ai.pptx",
+    "slug": "sales-healthcare-diagnostics-ai",
+    "title": "CuraSense Diagnostics — Clinical Triage AI Hospital Deck",
+    "description": "Medical B2B sales presentation for FDA-cleared radiology and ED triage AI deployment across multi-hospital health networks.",
+    "category": "Sales",
+    "industry": "Healthcare",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "sales",
+      "healthcare",
+      "diagnostics",
+      "ai",
+      "hospital",
+      "clinical",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\report-fintech-annual-2026.pptx",
+    "slug": "report-fintech-annual-2026",
+    "title": "Meridian Pay — FY2026 Annual Financial & Payments Report",
+    "description": "Shareholder annual financial report detailing $142B payment volume, take-rate expansion, operating leverage, and FY2027 guidance.",
+    "category": "Report",
+    "industry": "Fintech",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "report",
+      "fintech",
+      "annual-report",
+      "financials",
+      "payments",
+      "charts",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\report-climate-decarbonization-impact.pptx",
+    "slug": "report-climate-decarbonization-impact",
+    "title": "TerraGrid Carbon — 2026 Grid Decarbonization & ESG Report",
+    "description": "Annual climate impact and Scope 1-3 decarbonization verification report covering 4.8 GW of utility-scale battery storage and clean dispatch.",
+    "category": "Report",
+    "industry": "Climate",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "report",
+      "climate",
+      "esg",
+      "decarbonization",
+      "energy",
+      "storage",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\strategy-ai-platform-2027.pptx",
+    "slug": "strategy-ai-platform-2027",
+    "title": "Northstar Systems — FY2027 Agentic AI Strategy Playbook",
+    "description": "Executive technology strategy playbook defining multi-agent orchestration, inference cost optimization, eval gates, and 3-horizon AI bets.",
+    "category": "Strategy",
+    "industry": "AI",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "strategy",
+      "ai",
+      "agents",
+      "playbook",
+      "infrastructure",
+      "evals",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\strategy-mobility-ev-expansion.pptx",
+    "slug": "strategy-mobility-ev-expansion",
+    "title": "VoltGrid Mobility — Southeast Asia EV Charging Expansion Strategy",
+    "description": "Regional market entry and site-selection strategy for 2,400 ultra-fast 350kW EV charging bays across ASEAN metro corridors.",
+    "category": "Strategy",
+    "industry": "Mobility",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "strategy",
+      "mobility",
+      "ev",
+      "charging",
+      "asean",
+      "expansion",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\guideline-agency-design-system.pptx",
+    "slug": "guideline-agency-design-system",
+    "title": "Atelier Forma — Brand Identity & Editorial Design System Guideline",
+    "description": "Comprehensive brand manual covering Swiss typographic hierarchy, calibrated warm-editorial color tokens, grid ratios, and motion timing.",
+    "category": "Guideline",
+    "industry": "Agency",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "guideline",
+      "brand-book",
+      "design-system",
+      "typography",
+      "agency",
+      "swiss",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\pitch-saas-series-b.pptx",
+    "slug": "pitch-saas-series-b",
+    "title": "PulseStack — Series B $42M Fundraising Pitch Deck",
+    "description": "Series B venture fundraising deck for an autonomous cloud observability and eBPF incident-remediation SaaS platform at $28M ARR.",
+    "category": "Pitch",
+    "industry": "SaaS",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "pitch",
+      "series-b",
+      "saas",
+      "observability",
+      "ebpf",
+      "fundraising",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\pitch-aerospace-orbital-propulsion.pptx",
+    "slug": "pitch-aerospace-orbital-propulsion",
+    "title": "Aether Propulsion — Series A Hall-Effect Thrusters Pitch",
+    "description": "Deep-tech Series A pitch deck for high-thrust krypton Hall-effect electric propulsion systems powering LEO/GEO satellite constellations.",
+    "category": "Pitch",
+    "industry": "Aerospace",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "pitch",
+      "aerospace",
+      "space",
+      "propulsion",
+      "series-a",
+      "hardware",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\portfolio-architecture-civic-studio.pptx",
+    "slug": "portfolio-architecture-civic-studio",
+    "title": "Kuroda & Partners — Civic & Cultural Architecture Monograph",
+    "description": "Architectural studio monograph showcasing timber-hybrid civic libraries, waterfront cultural pavilions, and net-zero urban adaptive reuse.",
+    "category": "Portfolio",
+    "industry": "Real Estate",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "portfolio",
+      "architecture",
+      "real-estate",
+      "monograph",
+      "timber",
+      "civic",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\marketing-ecommerce-q4-growth.pptx",
+    "slug": "marketing-ecommerce-q4-growth",
+    "title": "Loom & Co. — Omnichannel Q4 Growth & Retention Campaign",
+    "description": "D2C apparel & homeware Q4 BFCM growth marketing plan covering creator whitelisting, SMS VIP drops, and post-purchase retention.",
+    "category": "Marketing",
+    "industry": "Ecommerce",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "marketing",
+      "ecommerce",
+      "d2c",
+      "growth",
+      "bfcm",
+      "retention",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\talks-security-zero-trust-postmortem.pptx",
+    "slug": "talks-security-zero-trust-postmortem",
+    "title": "BlackHat Briefing — Anatomy of Cloud IAM Lateral Movement & Zero-Trust Defense",
+    "description": "Technical security conference keynote dissecting a real-world CI/CD OIDC token pivot, IMDSv1 escalation, and hardware-backed Zero-Trust fixes.",
+    "category": "Talks",
+    "industry": "Security",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "talks",
+      "security",
+      "keynote",
+      "iam",
+      "cloud",
+      "zero-trust",
+      "postmortem",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  },
+  {
+    "path": "D:\\code\\ppt_studio\\corpus_curated_v2\\other-education-ai-curriculum.pptx",
+    "slug": "other-education-ai-curriculum",
+    "title": "Horizon Polytech — Applied AI Engineering Curriculum & Lab Blueprint",
+    "description": "Accredited university undergraduate curriculum blueprint integrating systems engineering, ML math, safety evals, and industry capstone labs.",
+    "category": "Other",
+    "industry": "Education",
+    "source": "corpus_curated",
+    "slides": 15,
+    "tags": [
+      "other",
+      "education",
+      "curriculum",
+      "university",
+      "ai-engineering",
+      "blueprint",
+      "morph",
+      "avant-garde",
+      "15-plus-slides"
+    ]
+  }
+]

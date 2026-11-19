@@ -1,0 +1,160 @@
+---
+import type { DeckItem } from "../lib/deckCatalog";
+
+interface Props {
+  deck: DeckItem;
+  index?: number;
+}
+
+const { deck, index = 0 } = Astro.props;
+const specNum = String(index + 1).padStart(4, "0");
+const isFeatured = index % 7 === 0;
+---
+
+<article
+  class:list={[
+    "deck-card group relative flex flex-col overflow-hidden",
+    isFeatured && "bento-featured",
+  ]}
+  data-deck-id={deck.id}
+  data-deck-slug={deck.slug}
+  data-category={deck.category}
+  data-industry={deck.industry}
+  data-has-morph={String(deck.hasMorph)}
+  data-has-animation={String(deck.hasAnimation)}
+  data-slides={String(deck.slidesCount)}
+  data-morph-slides={String(deck.morphSlides)}
+  data-slides-preview={JSON.stringify(deck.slidesPreview.slice(0, 6))}
+  data-accent={deck.colors[0] ?? "#C22F10"}
+>
+  <!-- 16:9 Framed Brutalist Slide Canvas -->
+  <button
+    type="button"
+    data-open-deck={deck.slug}
+    class="card-thumb-btn relative block aspect-video w-full overflow-hidden border-b-2 border-[var(--brut-border-strong)] bg-[#111111] text-left focus:outline-none cursor-pointer"
+  >
+    <img
+      src={deck.coverImage}
+      alt={`Inspect ${deck.title} — Cover Slide`}
+      loading={index < 8 ? "eager" : "lazy"}
+      decoding="async"
+      class="card-preview-img h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+    />
+
+    <!-- Corner Structural Registration Marks -->
+    <span aria-hidden="true" class="pointer-events-none absolute left-2 top-2 font-mono text-[10px] font-bold leading-none text-white/70">+</span>
+    <span aria-hidden="true" class="pointer-events-none absolute right-2 bottom-2 font-mono text-[10px] font-bold leading-none text-white/70">+</span>
+
+    <!-- Hover Scrub Indicator Bar -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-1.5 bg-black/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+      <div class="card-hover-progress h-full w-1/6 bg-[#FF784E] transition-all duration-300"></div>
+    </div>
+
+    <!-- Top Overlay Tags -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-2.5 top-2.5 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5">
+        <span class="inline-flex items-center border border-white/25 bg-[#111111]/90 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#F2EFE9]">
+          NO. {specNum}
+        </span>
+        {deck.hasMorph && (
+          <span class="inline-flex items-center gap-1 border border-[#FF784E]/60 bg-[#111111]/90 px-2 py-0.5 font-mono text-[10px] font-semibold text-[#FFB49A]">
+            ✦ MORPH
+          </span>
+        )}
+      </div>
+
+      <span class="card-slide-hud inline-flex items-center border border-white/25 bg-[#111111]/90 px-2 py-0.5 font-mono text-[10px] font-bold text-white">
+        {deck.slidesCount} SLIDES
+      </span>
+    </div>
+
+    <!-- Bottom Overlay: Curator Review Grade & Design Family -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-2.5 bottom-2.5 flex items-center justify-between gap-2">
+      <div
+        class="card-bos-grade hidden items-center gap-1.5 border border-white/25 bg-[#111111]/95 px-2 py-0.5 font-mono text-[10px] font-bold text-white"
+        data-grade-for={deck.id}
+      >
+        <span class="grade-tier-pill px-1 text-[10px]"></span>
+        <span class="grade-stars-text text-amber-300"></span>
+      </div>
+
+      {deck.designFamily && (
+        <span class="ml-auto inline-flex items-center border border-white/20 bg-[#111111]/88 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-zinc-200">
+          {deck.designFamily}
+        </span>
+      )}
+    </div>
+  </button>
+
+  <!-- Structural Metadata & Human + AI Utility Bar -->
+  <div class="card-meta-wrap flex flex-1 flex-col justify-between gap-3 p-4">
+    <div class="min-w-0 flex-1">
+      <button
+        type="button"
+        data-open-deck={deck.slug}
+        class="card-title-btn text-left font-display text-[15px] font-bold leading-snug tracking-tight transition-colors hover:text-[#C22F10] focus:outline-none cursor-pointer line-clamp-1"
+      >
+        {deck.title}
+      </button>
+
+      <div class="mt-2.5 flex flex-wrap items-center gap-1.5">
+        <span class="brut-chip px-2 py-0.5 font-mono text-[10px] font-bold uppercase">
+          {deck.category}
+        </span>
+        <span class="brut-chip px-2 py-0.5 font-mono text-[10px]">
+          {deck.industry}
+        </span>
+        <div class="ml-auto flex items-center gap-1" title="Extracted Color Palette">
+          {deck.colors.slice(0, 4).map((hex) => (
+            <span
+              class="h-3.5 w-3.5 border border-[var(--brut-border-strong)]"
+              style={`background-color: ${hex};`}
+              title={hex}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="card-actions-bar flex items-center justify-between gap-2 border-t border-[var(--brut-border)] pt-3">
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          data-open-deck={deck.slug}
+          class="inline-flex items-center gap-1 font-mono text-[11px] font-bold uppercase tracking-wide transition-colors hover:text-[#C22F10] cursor-pointer whitespace-nowrap"
+        >
+          <span>Preview</span>
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <button
+          type="button"
+          data-copy-prompt={deck.slug}
+          title="Copy AI design prompt & OOXML spec for this deck"
+          class="brut-btn hidden sm:inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[10px] font-bold cursor-pointer whitespace-nowrap"
+        >
+          ⧉ AI Prompt
+        </button>
+
+        <button
+          type="button"
+          data-pin-hero={deck.slug}
+          title="Load onto Featured Hero Stage"
+          class="brut-btn hidden xl:inline-flex items-center px-1.5 py-0.5 font-mono text-[10px] font-bold cursor-pointer"
+        >
+          ◎
+        </button>
+      </div>
+
+      <a
+        href={deck.pptxUrl}
+        download
+        data-download-pptx
+        title={`Download ${deck.title} (.pptx)`}
+        class="brut-btn-primary inline-flex shrink-0 items-center gap-1 px-2.5 py-1 font-mono text-[11px] font-bold"
+      >
+        <span>↓ .PPTX</span>
+      </a>
+    </div>
+  </div>
+</article>

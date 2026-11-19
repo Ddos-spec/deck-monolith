@@ -1,0 +1,427 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import decksData from "../../data/decks.json";
+import { type DeckItem } from "../../lib/deckCatalog";
+
+export function getStaticPaths() {
+  const decks = decksData as DeckItem[];
+  return decks.map((deck, idx) => ({
+    params: { slug: deck.slug },
+    props: {
+      deck,
+      totalDecks: decks.length,
+      prevSlug: decks[(idx - 1 + decks.length) % decks.length]?.slug ?? deck.slug,
+      nextSlug: decks[(idx + 1) % decks.length]?.slug ?? deck.slug,
+      deckIndex: idx + 1,
+    },
+  }));
+}
+
+interface Props {
+  deck: DeckItem;
+  totalDecks: number;
+  prevSlug: string;
+  nextSlug: string;
+  deckIndex: number;
+}
+
+const { deck, totalDecks, prevSlug, nextSlug, deckIndex } = Astro.props;
+const slides = deck.slidesPreview.length > 0 ? deck.slidesPreview : [deck.coverImage];
+---
+
+<BaseLayout title={`${deck.title} — DECK.MONOLITH`} description={deck.description}>
+  <Navbar totalDecks={totalDecks} showControls={false} />
+
+  <main class="mx-auto max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8">
+    <!-- Top Header -->
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#27272A] pb-5">
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase text-emerald-300">
+            Free
+          </span>
+          <span class="rounded-full border border-[#27272A] bg-[#18181B] px-2.5 py-0.5 text-xs text-zinc-300">
+            {deck.category}
+          </span>
+          <span class="rounded-full border border-[#27272A] bg-[#18181B] px-2.5 py-0.5 text-xs text-zinc-400">
+            {deck.industry}
+          </span>
+          {deck.hasMorph && (
+            <span class="rounded-full border border-violet-400/35 bg-violet-500/10 px-2.5 py-0.5 font-mono text-[10px] text-violet-300">
+              ✦ Morph
+            </span>
+          )}
+          {deck.hasAnimation && (
+            <span class="rounded-full border border-amber-400/35 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] text-amber-300">
+              ⚡ Anim
+            </span>
+          )}
+        </div>
+        <h1 class="mt-2.5 text-xl font-bold text-white sm:text-2xl">{deck.title}</h1>
+        <p class="mt-1 max-w-2xl text-sm text-zinc-400">{deck.description}</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <a
+          href={`/deck/${prevSlug}`}
+          class="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#27272A] bg-[#18181B] px-3.5 font-mono text-xs text-zinc-200 transition-colors hover:border-zinc-500 hover:text-white"
+        >
+          ← Prev PPT
+        </a>
+        <span class="font-mono text-xs text-zinc-400">
+          {deckIndex} / {totalDecks}
+        </span>
+        <a
+          href={`/deck/${nextSlug}`}
+          class="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#27272A] bg-[#18181B] px-3.5 font-mono text-xs text-zinc-200 transition-colors hover:border-zinc-500 hover:text-white"
+        >
+          Next PPT →
+        </a>
+        <a
+          href={deck.pptxUrl}
+          download
+          class="inline-flex h-10 items-center gap-2 rounded-full bg-white px-5 text-xs font-semibold text-[#0D0D0F] transition-colors hover:bg-zinc-200"
+        >
+          <span>Download Free .pptx</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Two-Column Slide Carousel + AI Inspector -->
+    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <!-- Carousel Stage -->
+      <section class="lg:col-span-8 flex flex-col gap-3">
+        <div class="relative aspect-video w-full overflow-hidden rounded-2xl border border-[#27272A] bg-[#18181B]">
+          <button
+            id="standalone-prev-btn"
+            type="button"
+            aria-label="Previous slide"
+            class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#27272A] bg-[#0D0D0F]/85 text-white backdrop-blur-md hover:border-zinc-400 cursor-pointer"
+          >
+            ←
+          </button>
+
+          <img
+            id="standalone-slide-img"
+            src={slides[0]}
+            alt={`${deck.title} — Slide 1`}
+            class="h-full w-full object-contain bg-[#0D0D0F]"
+          />
+
+          <button
+            id="standalone-next-btn"
+            type="button"
+            aria-label="Next slide"
+            class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#27272A] bg-[#0D0D0F]/85 text-white backdrop-blur-md hover:border-zinc-400 cursor-pointer"
+          >
+            →
+          </button>
+
+          <div class="pointer-events-none absolute bottom-3 right-3 rounded-full border border-white/10 bg-[#0D0D0F]/85 px-3 py-1 font-mono text-xs text-zinc-200 backdrop-blur-md">
+            <span id="standalone-slide-counter">1 / {slides.length}</span>
+          </div>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-1">
+          {slides.map((src, idx) => (
+            <button
+              type="button"
+              data-standalone-thumb={idx}
+              class:list={[
+                "relative aspect-video h-16 shrink-0 overflow-hidden rounded-xl border bg-[#18181B] transition-all cursor-pointer",
+                idx === 0 ? "border-white opacity-100" : "border-[#27272A] opacity-55 hover:opacity-90",
+              ]}
+            >
+              <img src={src} alt={`Slide ${idx + 1}`} class="h-full w-full object-cover" />
+              <span class="absolute bottom-1 right-1 rounded bg-black/75 px-1 font-mono text-[10px] text-zinc-200">
+                {idx + 1}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <!-- Inspector Sidebar -->
+      <aside class="lg:col-span-4 space-y-5">
+        <!-- Bos Review & Grading -->
+        <section class="rounded-2xl border border-[#27272A] bg-[#18181B] p-4">
+          <div class="flex items-center justify-between">
+            <h2 class="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-200">
+              Bos Review &amp; Grading
+            </h2>
+            <span id="standalone-saved-status" class="font-mono text-[10px] text-emerald-400 opacity-0 transition-opacity">
+              Saved locally
+            </span>
+          </div>
+
+          <div class="mt-3 grid grid-cols-4 gap-2">
+            {["S", "A", "B", "C"].map((tier) => (
+              <button
+                type="button"
+                data-standalone-tier={tier}
+                class="standalone-tier-btn rounded-xl border border-[#27272A] bg-[#0D0D0F] py-1.5 font-mono text-xs font-bold text-zinc-400 hover:border-zinc-500 hover:text-white cursor-pointer"
+              >
+                {tier}
+              </button>
+            ))}
+          </div>
+
+          <div class="mt-3 flex items-center justify-between">
+            <span class="text-xs text-zinc-400">Star Rating</span>
+            <div class="flex items-center gap-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  type="button"
+                  data-standalone-star={star}
+                  class="standalone-star-btn p-1 text-lg leading-none text-zinc-600 hover:scale-110 cursor-pointer"
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <textarea
+            id="standalone-notes"
+            rows="2"
+            placeholder="Critique layout rhythm, typography, morph transitions..."
+            class="mt-3 w-full rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2 text-xs text-zinc-100 placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none"
+          ></textarea>
+        </section>
+
+        <!-- AI Spec & Blueprint -->
+        <section class="rounded-2xl border border-[#27272A] bg-[#18181B] p-4 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-200">
+              AI Spec &amp; Blueprint
+            </h2>
+            <span class="rounded-full border border-[#27272A] bg-[#0D0D0F] px-2 py-0.5 font-mono text-[10px] text-zinc-400">
+              Zero-MCP
+            </span>
+          </div>
+
+          <div>
+            <span class="block text-[11px] text-zinc-400">Color Palette (click to copy)</span>
+            <div class="mt-2 flex flex-wrap gap-2">
+              {deck.colors.map((hex) => (
+                <button
+                  type="button"
+                  data-copy-hex={hex}
+                  class="inline-flex items-center gap-2 rounded-full border border-[#27272A] bg-[#0D0D0F] px-2.5 py-1 font-mono text-[11px] text-zinc-200 hover:border-zinc-500 cursor-pointer"
+                >
+                  <span class="h-3.5 w-3.5 rounded-full border border-white/20" style={`background-color:${hex};`}></span>
+                  <span>{hex}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <span class="block text-[11px] text-zinc-400">Typography Pairing</span>
+            <div class="mt-1.5 flex flex-wrap gap-1.5">
+              {deck.fonts.map((font) => (
+                <span class="rounded-lg border border-[#27272A] bg-[#0D0D0F] px-2.5 py-1 font-mono text-[11px] text-zinc-200">
+                  {font}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2">
+              <span class="block text-[10px] text-zinc-500">Slides</span>
+              <span class="font-mono text-xs font-semibold text-white">{deck.slidesCount}</span>
+            </div>
+            <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2">
+              <span class="block text-[10px] text-zinc-500">Avg Shapes / Slide</span>
+              <span class="font-mono text-xs font-semibold text-white">{deck.avgShapesPerSlide}</span>
+            </div>
+            <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2">
+              <span class="block text-[10px] text-zinc-500">Morph Slides</span>
+              <span class="font-mono text-xs font-semibold text-white">{deck.morphSlides}</span>
+            </div>
+            <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2">
+              <span class="block text-[10px] text-zinc-500">Paired !!Morphs</span>
+              <span class="font-mono text-xs font-semibold text-white">{deck.pairedMorphSlides}</span>
+            </div>
+            <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2">
+              <span class="block text-[10px] text-zinc-500">Animated Slides</span>
+              <span class="font-mono text-xs font-semibold text-white">{deck.animationSlides}</span>
+            </div>
+            <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2">
+              <span class="block text-[10px] text-zinc-500">Source</span>
+              <span class="font-mono text-xs font-semibold text-white">{deck.source}</span>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] p-3">
+            <span class="block font-mono text-[10px] uppercase tracking-wider text-zinc-500">Blueprint Summary</span>
+            <p class="mt-1 text-xs leading-relaxed text-zinc-300">{deck.blueprintSummary}</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              id="standalone-copy-json-btn"
+              type="button"
+              class="rounded-full border border-[#27272A] bg-[#0D0D0F] px-3 py-2 text-xs font-medium text-zinc-200 hover:border-zinc-500 cursor-pointer"
+            >
+              Copy AI Blueprint JSON
+            </button>
+            <button
+              id="standalone-copy-prompt-btn"
+              type="button"
+              class="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#0D0D0F] hover:bg-zinc-200 cursor-pointer"
+            >
+              Copy AI Prompt
+            </button>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script id="standalone-deck-data" type="application/json" set:html={JSON.stringify(deck)}></script>
+  <script>
+    import { buildAiPromptFromDeck, type BosRatingRecord, type BosTier, type DeckItem } from "../../lib/deckCatalog";
+    import { copyToClipboard, loadRatings, saveRatings } from "../../scripts/gallery";
+
+    const raw = document.getElementById("standalone-deck-data")?.textContent;
+    if (raw) {
+      const deck = JSON.parse(raw) as DeckItem;
+      const slides = deck.slidesPreview.length > 0 ? deck.slidesPreview : [deck.coverImage];
+      let idx = 0;
+
+      const img = document.getElementById("standalone-slide-img") as HTMLImageElement | null;
+      const counter = document.getElementById("standalone-slide-counter");
+      const prevBtn = document.getElementById("standalone-prev-btn") as HTMLButtonElement | null;
+      const nextBtn = document.getElementById("standalone-next-btn") as HTMLButtonElement | null;
+
+      function setSlide(nextIdx: number) {
+        idx = (nextIdx + slides.length) % slides.length;
+        if (img) {
+          img.classList.remove("fx-morph-enter");
+          void img.offsetWidth;
+          img.src = slides[idx];
+          img.classList.add("fx-morph-enter");
+        }
+        if (counter) counter.textContent = `${idx + 1} / ${slides.length}`;
+        if (prevBtn) prevBtn.disabled = slides.length <= 1;
+        if (nextBtn) nextBtn.disabled = slides.length <= 1;
+        document.querySelectorAll<HTMLButtonElement>("[data-standalone-thumb]").forEach((btn) => {
+          const cur = Number(btn.dataset.standaloneThumb) === idx;
+          btn.classList.toggle("border-white", cur);
+          btn.classList.toggle("opacity-100", cur);
+          btn.classList.toggle("border-[#27272A]", !cur);
+          btn.classList.toggle("opacity-55", !cur);
+        });
+      }
+
+      prevBtn?.addEventListener("click", () => setSlide(idx - 1));
+      nextBtn?.addEventListener("click", () => setSlide(idx + 1));
+      document.querySelectorAll<HTMLButtonElement>("[data-standalone-thumb]").forEach((btn) => {
+        btn.addEventListener("click", () => setSlide(Number(btn.dataset.standaloneThumb ?? 0)));
+      });
+      let standaloneTimer: number | null = window.setInterval(() => setSlide(idx + 1), 2400);
+      img?.addEventListener("click", () => {
+        if (standaloneTimer !== null) {
+          window.clearInterval(standaloneTimer);
+          standaloneTimer = null;
+        } else {
+          standaloneTimer = window.setInterval(() => setSlide(idx + 1), 2400);
+        }
+      });
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target as HTMLElement)?.tagName;
+        if (tag === "TEXTAREA" || tag === "INPUT") return;
+        if (e.key === "ArrowLeft") setSlide(idx - 1);
+        if (e.key === "ArrowRight") setSlide(idx + 1);
+      });
+      setSlide(0);
+
+      // Copy controls
+      document.querySelectorAll<HTMLButtonElement>("[data-copy-hex]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const hex = btn.dataset.copyHex ?? "";
+          copyToClipboard(hex, `Copied ${hex}`);
+        });
+      });
+      document.getElementById("standalone-copy-json-btn")?.addEventListener("click", () => {
+        copyToClipboard(JSON.stringify(deck, null, 2), "Copied AI Blueprint JSON");
+      });
+      document.getElementById("standalone-copy-prompt-btn")?.addEventListener("click", () => {
+        copyToClipboard(buildAiPromptFromDeck(deck), "Copied AI Design Prompt");
+      });
+
+      // Bos Grading Sync
+      let ratings = loadRatings();
+      const notesEl = document.getElementById("standalone-notes") as HTMLTextAreaElement | null;
+      const savedEl = document.getElementById("standalone-saved-status");
+
+      function renderGrading() {
+        const rec: BosRatingRecord = ratings[deck.id] ?? {
+          deckId: deck.id,
+          slug: deck.slug,
+          title: deck.title,
+          category: deck.category,
+          tier: null,
+          stars: 0,
+          notes: "",
+          updatedAt: new Date().toISOString(),
+        };
+        document.querySelectorAll<HTMLButtonElement>("[data-standalone-tier]").forEach((btn) => {
+          const active = btn.dataset.standaloneTier === rec.tier;
+          btn.classList.toggle("bg-white", active);
+          btn.classList.toggle("text-[#0D0D0F]", active);
+          btn.classList.toggle("border-white", active);
+          btn.classList.toggle("bg-[#0D0D0F]", !active);
+          btn.classList.toggle("text-zinc-400", !active);
+        });
+        document.querySelectorAll<HTMLButtonElement>("[data-standalone-star]").forEach((btn) => {
+          const lit = Number(btn.dataset.standaloneStar ?? 0) <= rec.stars;
+          btn.classList.toggle("text-amber-400", lit);
+          btn.classList.toggle("text-zinc-600", !lit);
+        });
+        if (notesEl && notesEl.value !== rec.notes) notesEl.value = rec.notes;
+      }
+
+      function patchRating(patch: Partial<BosRatingRecord>) {
+        const prev = ratings[deck.id] ?? {
+          deckId: deck.id,
+          slug: deck.slug,
+          title: deck.title,
+          category: deck.category,
+          tier: null,
+          stars: 0,
+          notes: "",
+          updatedAt: new Date().toISOString(),
+        };
+        ratings = {
+          ...ratings,
+          [deck.id]: { ...prev, ...patch, updatedAt: new Date().toISOString() },
+        };
+        saveRatings(ratings);
+        renderGrading();
+        if (savedEl) {
+          savedEl.classList.remove("opacity-0");
+          window.setTimeout(() => savedEl.classList.add("opacity-0"), 1400);
+        }
+      }
+
+      document.querySelectorAll<HTMLButtonElement>("[data-standalone-tier]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const t = btn.dataset.standaloneTier as BosTier;
+          patchRating({ tier: ratings[deck.id]?.tier === t ? null : t });
+        });
+      });
+      document.querySelectorAll<HTMLButtonElement>("[data-standalone-star]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          patchRating({ stars: Number(btn.dataset.standaloneStar ?? 0) });
+        });
+      });
+      notesEl?.addEventListener("input", () => patchRating({ notes: notesEl.value }));
+      renderGrading();
+    }
+  </script>
+</BaseLayout>

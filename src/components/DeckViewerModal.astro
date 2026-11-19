@@ -1,0 +1,386 @@
+<!-- Full-Screen Dark Gallery Viewer + Live Motion Stage + Direct Deck-to-Deck Review -->
+<div
+  id="deck-viewer-backdrop"
+  class="fixed inset-0 z-50 hidden bg-[#0D0D0F]/95 backdrop-blur-xl"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="viewer-deck-title"
+>
+  <div
+    id="deck-viewer-panel"
+    data-open="false"
+    class="vault-modal flex h-full w-full flex-col overflow-hidden"
+  >
+    <!-- Top Bar: Deck Switcher + Title + Actions -->
+    <div class="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-[#27272A] bg-[#141417] px-3 sm:px-5">
+      <div class="flex min-w-0 items-center gap-2 sm:gap-3">
+        <!-- Seamless Prev / Next PPT Switcher (No Backing Out Needed) -->
+        <div class="flex shrink-0 items-center gap-1 rounded-full border border-[#27272A] bg-[#0D0D0F] p-0.5">
+          <button
+            id="viewer-prev-deck-btn"
+            type="button"
+            title="Previous PPT ([)"
+            aria-label="Previous PPT deck"
+            class="inline-flex h-7 items-center gap-1 rounded-full px-2.5 font-mono text-[11px] font-semibold text-zinc-200 transition-colors hover:bg-[#27272A] hover:text-white disabled:opacity-30 cursor-pointer"
+          >
+            <span>←</span>
+            <span class="hidden sm:inline">Prev PPT</span>
+          </button>
+          <span
+            id="viewer-deck-position"
+            class="px-1.5 font-mono text-[10px] text-zinc-400"
+          >
+            1 / 1
+          </span>
+          <button
+            id="viewer-next-deck-btn"
+            type="button"
+            title="Next PPT (])"
+            aria-label="Next PPT deck"
+            class="inline-flex h-7 items-center gap-1 rounded-full px-2.5 font-mono text-[11px] font-semibold text-zinc-200 transition-colors hover:bg-[#27272A] hover:text-white disabled:opacity-30 cursor-pointer"
+          >
+            <span class="hidden sm:inline">Next PPT</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <span class="hidden md:inline-flex border border-[#2DD4BF]/50 bg-[#111111] px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-[#2DD4BF]">
+          Free .PPTX
+        </span>
+        <h2 id="viewer-deck-title" class="truncate text-xs font-semibold text-white sm:text-sm md:text-base">
+          Deck Title
+        </h2>
+        <div id="viewer-meta-pills" class="hidden items-center gap-1.5 xl:flex"></div>
+      </div>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <button
+          id="viewer-arrow-mode-btn"
+          type="button"
+          title="Toggle what Left/Right Arrow keys control"
+          class="hidden md:inline-flex h-8 items-center gap-1.5 rounded-full border border-[#27272A] bg-[#18181B] px-3 font-mono text-[11px] text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white cursor-pointer"
+        >
+          ⇄ Arrows: <span id="viewer-arrow-mode-label" class="font-semibold text-white">Slide</span>
+        </button>
+        <a
+          id="viewer-permalink-link"
+          href="#"
+          class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-full border border-[#27272A] bg-[#18181B] px-3 text-xs text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white"
+        >
+          <span>Permalink</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          id="viewer-download-pptx-btn"
+          href="#"
+          download
+          class="inline-flex h-8 items-center gap-1.5 rounded-full bg-white px-3.5 sm:px-4 text-xs font-semibold text-[#0D0D0F] transition-colors hover:bg-zinc-200"
+        >
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span class="hidden sm:inline">Download .pptx</span>
+        </a>
+        <button
+          id="close-deck-viewer-btn"
+          type="button"
+          aria-label="Close viewer (Escape)"
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#27272A] bg-[#18181B] text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white cursor-pointer"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Two-Column Body -->
+    <div class="flex min-h-0 flex-1 flex-col lg:flex-row">
+      <!-- Left: Live Motion 16:9 Stage + Effects Bar + Thumbnail Strip -->
+      <section class="flex min-h-0 min-w-0 flex-1 flex-col justify-between overflow-hidden bg-[#0D0D0F] p-3 sm:p-5">
+        <!-- Live Web Motion Controls Toolbar -->
+        <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-1.5" role="toolbar" aria-label="Live presentation effects">
+            <button
+              id="viewer-autoplay-btn"
+              type="button"
+              class="inline-flex h-8 items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-3 font-mono text-[11px] font-semibold text-emerald-300 transition-colors hover:bg-emerald-500/25 cursor-pointer"
+            >
+              <span id="viewer-autoplay-icon">▶</span>
+              <span id="viewer-autoplay-label">Auto-Play Effects</span>
+            </button>
+
+            <button
+              type="button"
+              data-fx-mode="morph"
+              class="fx-mode-btn h-8 rounded-full border border-white bg-white px-3 font-mono text-[11px] font-semibold text-[#0D0D0F] transition-colors cursor-pointer"
+            >
+              ✦ Morph Flow
+            </button>
+            <button
+              type="button"
+              data-fx-mode="kinetic"
+              class="fx-mode-btn h-8 rounded-full border border-[#27272A] bg-[#18181B] px-3 font-mono text-[11px] text-zinc-300 transition-colors hover:border-zinc-500 cursor-pointer"
+            >
+              ⚡ Kinetic 3D
+            </button>
+            <button
+              type="button"
+              data-fx-mode="spatial"
+              class="fx-mode-btn h-8 rounded-full border border-[#27272A] bg-[#18181B] px-3 font-mono text-[11px] text-zinc-300 transition-colors hover:border-zinc-500 cursor-pointer"
+            >
+              ◎ Spatial Tilt
+            </button>
+            <button
+              type="button"
+              data-fx-mode="wipe"
+              class="fx-mode-btn h-8 rounded-full border border-[#27272A] bg-[#18181B] px-3 font-mono text-[11px] text-zinc-300 transition-colors hover:border-zinc-500 cursor-pointer"
+            >
+              ▤ Brutalist Wipe
+            </button>
+          </div>
+
+          <button
+            id="viewer-replay-fx-btn"
+            type="button"
+            class="h-8 rounded-full border border-[#27272A] bg-[#18181B] px-3 font-mono text-[11px] text-zinc-200 transition-colors hover:border-zinc-500 hover:text-white cursor-pointer"
+          >
+            ↻ Replay Effect
+          </button>
+        </div>
+
+        <!-- Main 16:9 Dual-Buffer Animated Stage -->
+        <div class="fx-stage-3d relative flex min-h-0 flex-1 items-center justify-center">
+          <button
+            id="viewer-prev-slide-btn"
+            type="button"
+            aria-label="Previous slide"
+            class="absolute left-2 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-[#27272A] bg-[#18181B]/90 text-white shadow-lg backdrop-blur-md transition-all hover:border-zinc-400 hover:bg-[#27272A] disabled:opacity-30 cursor-pointer"
+          >
+            ←
+          </button>
+
+          <div
+            id="viewer-stage-frame"
+            class="fx-stage-tilt relative aspect-video max-h-full w-full max-w-4xl overflow-hidden rounded-2xl border border-[#27272A] bg-[#0D0D0F] shadow-2xl"
+          >
+            <!-- Outgoing Buffer -->
+            <img
+              id="viewer-prev-slide-img"
+              src=""
+              alt=""
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 h-full w-full object-contain bg-[#0D0D0F] opacity-0"
+            />
+
+            <!-- Incoming / Active Animated Slide -->
+            <img
+              id="viewer-active-slide-img"
+              src=""
+              alt="Slide preview"
+              class="relative z-10 h-full w-full object-contain bg-[#0D0D0F]"
+            />
+
+            <!-- Live Animated Avant-Garde Kinetic Telemetry Layer -->
+            <div id="viewer-kinetic-overlay" aria-hidden="true" class="pointer-events-none absolute inset-0 z-20 overflow-hidden">
+              <div
+                id="fx-live-rule"
+                class="absolute left-4 top-2.5 h-[2px] w-1/3 rounded-full bg-amber-400/80 transition-all duration-700 ease-out"
+              ></div>
+              <div
+                id="fx-live-prism"
+                class="absolute right-4 top-12 h-6 w-6 rounded-sm border border-amber-400/70 bg-amber-400/15 transition-all duration-700 ease-out"
+              ></div>
+              <div
+                id="fx-live-num"
+                class="absolute bottom-4 right-5 font-mono text-3xl font-black tracking-tighter text-white/10 transition-all duration-700 ease-out sm:text-5xl"
+              >
+                01
+              </div>
+              <div class="absolute inset-x-0 bottom-0 h-1 bg-black/50">
+                <div
+                  id="fx-live-progress"
+                  class="h-full w-1/6 bg-amber-400 transition-all duration-700 ease-out"
+                ></div>
+              </div>
+            </div>
+
+            <div class="pointer-events-none absolute bottom-3 left-3 z-30 rounded-full border border-white/10 bg-[#0D0D0F]/85 px-3 py-1 font-mono text-[11px] text-zinc-200 backdrop-blur-md">
+              <span id="viewer-slide-counter">1 / 1</span>
+            </div>
+          </div>
+
+          <button
+            id="viewer-next-slide-btn"
+            type="button"
+            aria-label="Next slide"
+            class="absolute right-2 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-[#27272A] bg-[#18181B]/90 text-white shadow-lg backdrop-blur-md transition-all hover:border-zinc-400 hover:bg-[#27272A] disabled:opacity-30 cursor-pointer"
+          >
+            →
+          </button>
+        </div>
+
+        <!-- Thumbnail Strip + Shortcuts Bar -->
+        <div class="mt-3 flex flex-col gap-2">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] text-zinc-400">
+            <span>Shortcuts: <strong class="text-zinc-200">[ / ]</strong> Switch PPT · <strong class="text-zinc-200">← / →</strong> Slides · <strong class="text-zinc-200">Space</strong> Auto-Play · <strong class="text-zinc-200">S/A/B/C</strong> Tier</span>
+            <span class="font-mono">ESC to close</span>
+          </div>
+          <div
+            id="viewer-thumbnail-strip"
+            class="flex items-center gap-2.5 overflow-x-auto pb-1"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Right: Rapid Bos Grading Box + AI Spec & Blueprint Inspector -->
+      <aside class="w-full shrink-0 overflow-y-auto border-t border-[#27272A] bg-[#141417] p-5 lg:w-[420px] lg:border-l lg:border-t-0">
+        <div class="space-y-5">
+          <!-- Description -->
+          <div>
+            <p id="viewer-deck-description" class="text-xs leading-relaxed text-zinc-300"></p>
+            <div id="viewer-deck-tags" class="mt-2.5 flex flex-wrap gap-1.5"></div>
+          </div>
+
+          <!-- Bos Review & Grading Box -->
+          <section class="rounded-2xl border border-[#27272A] bg-[#18181B] p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-zinc-100">
+                Curator Review &amp; Grading
+              </h3>
+              <span id="bos-grade-saved-status" class="font-mono text-[10px] text-emerald-400 opacity-0 transition-opacity">
+                Saved locally
+              </span>
+            </div>
+
+            <!-- Tier Picker (S / A / B / C) -->
+            <div class="mt-3">
+              <span class="block text-[11px] text-zinc-400">Tier Rank (click or press S / A / B / C)</span>
+              <div id="bos-tier-buttons" class="mt-1.5 grid grid-cols-4 gap-2">
+                {["S", "A", "B", "C"].map((tier) => (
+                  <button
+                    type="button"
+                    data-bos-tier={tier}
+                    class="bos-tier-btn rounded-xl border border-[#27272A] bg-[#0D0D0F] py-1.5 font-mono text-xs font-bold text-zinc-400 transition-all hover:border-zinc-500 hover:text-white cursor-pointer"
+                  >
+                    {tier}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <!-- 1..5 Star Rating -->
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-[11px] text-zinc-400">Star Rating</span>
+              <div id="bos-star-buttons" class="flex items-center gap-1" role="group" aria-label="Star rating">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    type="button"
+                    data-bos-star={star}
+                    aria-label={`Rate ${star} stars`}
+                    class="bos-star-btn rounded-lg p-1 text-lg leading-none text-zinc-600 transition-transform hover:scale-110 cursor-pointer"
+                  >
+                    ★
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="mt-3">
+              <label for="bos-review-notes" class="block text-[11px] text-zinc-400">
+                Review Notes
+              </label>
+              <textarea
+                id="bos-review-notes"
+                rows="2"
+                placeholder="Critique layout rhythm, typography, morph transitions..."
+                class="mt-1.5 w-full rounded-xl border border-[#27272A] bg-[#0D0D0F] px-3 py-2 text-xs text-zinc-100 placeholder:text-zinc-600 focus:border-zinc-500 focus:outline-none"
+              ></textarea>
+            </div>
+
+            <!-- Rapid Review Actions -->
+            <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#27272A] pt-3">
+              <label class="inline-flex items-center gap-2 text-[11px] text-zinc-300 cursor-pointer select-none">
+                <input
+                  id="bos-auto-next-toggle"
+                  type="checkbox"
+                  checked
+                  class="h-3.5 w-3.5 rounded border-[#27272A] bg-[#0D0D0F] accent-emerald-500"
+                />
+                <span>Auto-Next PPT on Tier</span>
+              </label>
+
+              <button
+                id="bos-next-unreviewed-btn"
+                type="button"
+                class="rounded-full border border-[#27272A] bg-[#0D0D0F] px-3 py-1 font-mono text-[11px] font-medium text-zinc-200 transition-colors hover:border-zinc-500 hover:text-white cursor-pointer"
+              >
+                Next Unreviewed ⟶
+              </button>
+            </div>
+          </section>
+
+          <!-- AI Spec & Blueprint Inspector (NO MCP NEEDED) -->
+          <section class="rounded-2xl border border-[#27272A] bg-[#18181B] p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-zinc-100">
+                AI Design Spec &amp; Blueprint
+              </h3>
+              <span class="border border-zinc-600 bg-[#0D0D0F] px-2 py-0.5 font-mono text-[10px] text-zinc-300">
+                HTTP JSON
+              </span>
+            </div>
+
+            <!-- Click-to-copy Hex Swatches -->
+            <div class="mt-3">
+              <span class="block text-[11px] text-zinc-400">Color Palette (click to copy)</span>
+              <div id="viewer-color-swatches" class="mt-2 flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Typography Pairing -->
+            <div class="mt-4">
+              <span class="block text-[11px] text-zinc-400">Typography Pairing</span>
+              <div id="viewer-font-pills" class="mt-1.5 flex flex-wrap gap-1.5"></div>
+            </div>
+
+            <!-- OOXML Telemetry -->
+            <div class="mt-4">
+              <span class="block text-[11px] text-zinc-400">OOXML Telemetry</span>
+              <div id="viewer-ooxml-grid" class="mt-1.5 grid grid-cols-2 gap-2"></div>
+            </div>
+
+            <!-- Blueprint Summary -->
+            <div class="mt-4 rounded-xl border border-[#27272A] bg-[#0D0D0F] p-3">
+              <span class="block font-mono text-[10px] uppercase tracking-wider text-zinc-500">
+                Blueprint Summary
+              </span>
+              <p id="viewer-blueprint-summary" class="mt-1 text-xs leading-relaxed text-zinc-300"></p>
+            </div>
+
+            <!-- Copy Blueprint JSON & Copy AI Prompt -->
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              <button
+                id="viewer-copy-json-btn"
+                type="button"
+                class="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#27272A] bg-[#0D0D0F] px-3 py-2 text-xs font-medium text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-[#202024] hover:text-white cursor-pointer"
+              >
+                Copy AI Blueprint JSON
+              </button>
+              <button
+                id="viewer-copy-prompt-btn"
+                type="button"
+                class="inline-flex items-center justify-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#0D0D0F] transition-colors hover:bg-zinc-200 cursor-pointer"
+              >
+                Copy AI Prompt
+              </button>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

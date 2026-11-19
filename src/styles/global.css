@@ -1,0 +1,451 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Default Mode: Raw Architectural Limestone & Structural Ink (WCAG AA/AAA Contrast) */
+:root {
+  --brut-bg: #F2EFE9;
+  --brut-surface: #FFFFFF;
+  --brut-elevated: #E6E1D6;
+  --brut-border: #C4BEB0;
+  --brut-border-strong: #111111;
+  --brut-ink: #111111;
+  --brut-muted: #4A4843;
+  --brut-signal: #C22F10;
+  --brut-teal: #0F665F;
+  --brut-shadow: 4px 4px 0px #111111;
+  --brut-shadow-hover: 6px 6px 0px #C22F10;
+  --brut-chip-bg: #EBE6DC;
+  color-scheme: light;
+}
+
+/* Optional Mode: Obsidian Brutalist Monolith */
+html.theme-obsidian {
+  --brut-bg: #0B0C0E;
+  --brut-surface: #13151A;
+  --brut-elevated: #1C1F26;
+  --brut-border: #2C313C;
+  --brut-border-strong: #EAE5DC;
+  --brut-ink: #F2EFE9;
+  --brut-muted: #A4A9B4;
+  --brut-signal: #E04B27;
+  --brut-teal: #2DD4BF;
+  --brut-shadow: 4px 4px 0px #252933;
+  --brut-shadow-hover: 6px 6px 0px #E04B27;
+  --brut-chip-bg: #1B1E25;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    background-color: var(--brut-bg);
+    color: var(--brut-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--brut-bg);
+    color: var(--brut-ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 220ms ease, color 220ms ease;
+    /* Exposed 48px Architectural Concrete Module Grid */
+    background-image:
+      linear-gradient(to right, rgba(17, 17, 17, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  html.theme-obsidian body {
+    background-image:
+      linear-gradient(to right, rgba(242, 239, 233, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(242, 239, 233, 0.045) 1px, transparent 1px);
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--brut-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--brut-border-strong);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--brut-signal);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif-editorial {
+  font-family: var(--font-serif);
+}
+
+/* Brutalist Architectural Block Primitives */
+.brut-header {
+  background-color: var(--brut-surface);
+  border-color: var(--brut-border-strong);
+  color: var(--brut-ink);
+}
+
+.brut-topbar {
+  background-color: #111111;
+  color: #F2EFE9;
+  border-color: #111111;
+}
+
+html.theme-obsidian .brut-topbar {
+  background-color: #060709;
+  color: #F2EFE9;
+  border-color: #2C313C;
+}
+
+.brut-panel {
+  background-color: var(--brut-surface);
+  border: 2px solid var(--brut-border-strong);
+  box-shadow: var(--brut-shadow);
+  color: var(--brut-ink);
+}
+
+.brut-subpanel {
+  background-color: var(--brut-elevated);
+  border: 1px solid var(--brut-border-strong);
+  color: var(--brut-ink);
+}
+
+.brut-input {
+  background-color: var(--brut-bg);
+  border: 1.5px solid var(--brut-border-strong);
+  color: var(--brut-ink);
+}
+
+.brut-input::placeholder {
+  color: var(--brut-muted);
+}
+
+.brut-btn {
+  background-color: var(--brut-surface);
+  border: 1.5px solid var(--brut-border-strong);
+  color: var(--brut-ink);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+
+.brut-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--brut-border-strong);
+}
+
+.brut-btn-primary {
+  background-color: var(--brut-ink);
+  border: 1.5px solid var(--brut-border-strong);
+  color: var(--brut-bg);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.brut-btn-primary:hover {
+  background-color: var(--brut-signal);
+  border-color: var(--brut-border-strong);
+  color: #FFFFFF;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--brut-border-strong);
+}
+
+.brut-btn-signal {
+  background-color: var(--brut-signal);
+  border: 1.5px solid var(--brut-border-strong);
+  color: #FFFFFF;
+  box-shadow: 3px 3px 0px var(--brut-border-strong);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.brut-btn-signal:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px var(--brut-border-strong);
+}
+
+.brut-chip {
+  background-color: var(--brut-chip-bg);
+  border: 1px solid var(--brut-border-strong);
+  color: var(--brut-ink);
+}
+
+.brut-muted {
+  color: var(--brut-muted);
+}
+
+.brut-ink {
+  color: var(--brut-ink);
+}
+
+/* Brutalist Exhibition Card */
+.deck-card {
+  background-color: var(--brut-surface);
+  border: 2px solid var(--brut-border-strong);
+  box-shadow: var(--brut-shadow);
+  color: var(--brut-ink);
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.deck-card:hover {
+  transform: translate(-2px, -3px);
+  box-shadow: var(--brut-shadow-hover);
+}
+
+/* Asymmetric Bento Span on every 7th Specimen */
+@media (min-width: 1280px) {
+  .view-bento .deck-card.bento-featured {
+    grid-column: span 2 / span 2;
+  }
+  .view-bento .deck-card.bento-featured .card-thumb-btn {
+    aspect-ratio: 21 / 10;
+  }
+}
+
+/* Brutalist Catalogue Index List Mode */
+.view-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.view-list .deck-card {
+  flex-direction: row !important;
+  align-items: center;
+  min-height: 88px;
+}
+
+.view-list .deck-card .card-thumb-btn {
+  width: 176px;
+  min-width: 176px;
+  aspect-ratio: 16 / 9;
+  border-bottom: none !important;
+  border-right: 2px solid var(--brut-border-strong);
+}
+
+.view-list .deck-card .card-meta-wrap {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+}
+
+.view-list .deck-card .card-actions-bar {
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .view-list .deck-card {
+    flex-direction: column !important;
+  }
+  .view-list .deck-card .card-thumb-btn {
+    width: 100%;
+    border-right: none !important;
+    border-bottom: 2px solid var(--brut-border-strong) !important;
+  }
+  .view-list .deck-card .card-meta-wrap {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+}
+
+/* Marquee Ticker & Compass Orbital Dial */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 42s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slowOrbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbital-spin {
+  animation: slowOrbitSpin 24s linear infinite;
+}
+
+/* Native @starting-style transitions for modals & drawers */
+.vault-modal[data-open="true"] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@starting-style {
+  .vault-modal[data-open="true"] {
+    opacity: 0;
+    transform: scale(0.98) translateY(6px);
+  }
+}
+
+.vault-drawer[data-open="true"] {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms ease, transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@starting-style {
+  .vault-drawer[data-open="true"] {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* === Live Web Morph, Kinetic 3D & Avant-Garde Stage Effects === */
+.fx-stage-3d {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.fx-stage-tilt {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms ease;
+}
+
+@keyframes fxMorphEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translate3d(24px, 0, 0);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fxMorphLeave {
+  0% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.03) translate3d(-24px, 0, 0);
+    filter: blur(3px);
+  }
+}
+
+@keyframes fxKineticEnter {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-18deg) translate3d(48px, 10px, 0) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes fxKineticLeave {
+  0% {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(14deg) translate3d(-48px, -8px, 0) scale(0.92);
+  }
+}
+
+@keyframes fxWipeEnter {
+  0% {
+    opacity: 0.35;
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 82% 100%);
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: scale(1);
+  }
+}
+
+@keyframes fxWipeLeave {
+  0% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    opacity: 0;
+    clip-path: polygon(0 0, 18% 0, 0 100%, 0 100%);
+  }
+}
+
+.fx-morph-enter {
+  animation: fxMorphEnter 580ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.fx-morph-leave {
+  animation: fxMorphLeave 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fx-kinetic-enter {
+  animation: fxKineticEnter 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.fx-kinetic-leave {
+  animation: fxKineticLeave 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fx-wipe-enter {
+  animation: fxWipeEnter 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.fx-wipe-leave {
+  animation: fxWipeLeave 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fxDeckSwitch {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.fx-deck-switch {
+  animation: fxDeckSwitch 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track, .orbital-spin, .fx-morph-enter, .fx-morph-leave, .fx-kinetic-enter, .fx-kinetic-leave, .fx-wipe-enter, .fx-wipe-leave {
+    animation: none !important;
+  }
+  .deck-card {
+    transition: border-color 150ms ease !important;
+    transform: none !important;
+  }
+}

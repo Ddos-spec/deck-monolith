@@ -1,0 +1,78 @@
+<!-- Category Scoreboard Drawer -->
+<div
+  id="scoreboard-backdrop"
+  class="fixed inset-0 z-50 hidden justify-end bg-black/70 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="scoreboard-title"
+>
+  <aside
+    id="scoreboard-panel"
+    data-open="false"
+    class="vault-drawer flex h-full w-full max-w-md flex-col border-l border-[#27272A] bg-[#18181B] shadow-2xl"
+  >
+    <div class="flex items-center justify-between border-b border-[#27272A] px-5 py-4">
+      <div>
+        <h2 id="scoreboard-title" class="text-sm font-bold uppercase tracking-tight text-white">
+          Curator Category Scoreboard
+        </h2>
+        <p class="mt-0.5 text-xs text-zinc-300">
+          Average star score &amp; S/A tier density across all 10 categories
+        </p>
+      </div>
+      <button
+        id="close-scoreboard-btn"
+        type="button"
+        aria-label="Close scoreboard"
+        class="rounded-full p-1.5 text-zinc-400 transition-colors hover:bg-[#27272A] hover:text-white cursor-pointer"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Summary KPI Strip -->
+    <div class="grid grid-cols-3 gap-2 border-b border-[#27272A] bg-[#141417] p-4">
+      <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] p-3">
+        <span class="block font-mono text-[10px] text-zinc-500">GRADED</span>
+        <span id="scoreboard-total-graded" class="mt-1 block font-mono text-lg font-semibold text-white">0</span>
+      </div>
+      <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] p-3">
+        <span class="block font-mono text-[10px] text-zinc-500">AVG STARS</span>
+        <span id="scoreboard-avg-stars" class="mt-1 block font-mono text-lg font-semibold text-amber-400">—</span>
+      </div>
+      <div class="rounded-xl border border-[#27272A] bg-[#0D0D0F] p-3">
+        <span class="block font-mono text-[10px] text-zinc-500">TOP TIER S/A</span>
+        <span id="scoreboard-top-tier" class="mt-1 block font-mono text-lg font-semibold text-emerald-400">0</span>
+      </div>
+    </div>
+
+    <!-- Per-Category Rows -->
+    <div id="scoreboard-category-list" class="min-h-0 flex-1 space-y-2 overflow-y-auto p-4"></div>
+
+    <!-- Footer Actions -->
+    <div class="flex items-center justify-between gap-3 border-t border-[#27272A] bg-[#141417] px-5 py-3.5">
+      <button
+        id="scoreboard-clear-ratings-btn"
+        type="button"
+        class="rounded-full px-3 py-1.5 text-xs text-zinc-400 transition-colors hover:bg-[#27272A] hover:text-rose-300 cursor-pointer"
+      >
+        Clear local ratings
+      </button>
+      <button
+        id="scoreboard-export-btn"
+        type="button"
+        class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0D0D0F] transition-colors hover:bg-zinc-200 cursor-pointer"
+      >
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        <span>Export Ratings JSON</span>
+      </button>
+    </div>
+  </aside>
+</div>

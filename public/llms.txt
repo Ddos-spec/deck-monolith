@@ -1,0 +1,11 @@
+# DECK.MONOLITH — Brutalist Architectural Presentation & AI Blueprint Archive
+
+Total curated `.pptx` presentation systems: 1060
+
+## AI Endpoints (Zero MCP Required)
+- `GET /api/decks.json` — Complete JSON catalog with design systems, categories, industries, color tokens, typography pairings, Morph transition specs, slide previews, and native `.pptx` URLs.
+- `GET /pptx/<slug>.pptx` — Native, editable OOXML `.pptx` file.
+- `GET /previews/<slug>/slide_01.png` — Rendered 16:9 PNG keyframe previews per deck.
+
+## Categories
+Pitch, Guideline, Report, Talks, Portfolio, Marketing, Sales, Strategy, Proposal, Other

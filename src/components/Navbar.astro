@@ -1,0 +1,164 @@
+---
+interface Props {
+  totalDecks: number;
+  showControls?: boolean;
+}
+
+const { totalDecks, showControls = true } = Astro.props;
+---
+
+<header class="brut-header sticky top-0 z-40 border-b-2 overflow-x-hidden">
+  <!-- Top Brutalist Architectural Strip -->
+  <div class="brut-topbar border-b text-[10px] font-mono tracking-widest uppercase">
+    <div class="mx-auto flex h-7 max-w-[1480px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div class="relative flex-1 overflow-hidden">
+        <div class="ticker-track gap-8 whitespace-nowrap">
+          <span>MONOLITH // DECK.GALLERY BRUTALIST EDITION</span>
+          <span class="text-[#FF784E]">■</span>
+          <span>{totalDecks} CURATED PRESENTATIONS</span>
+          <span class="text-[#2DD4BF]">■</span>
+          <span>16 AVANT-GARDE SLIDE ARCHITECTURES</span>
+          <span class="text-[#FF784E]">■</span>
+          <span>HUMAN STAGE PREVIEW + AI BLUEPRINT ENGINE</span>
+          <span class="text-[#2DD4BF]">■</span>
+          <span>MONOLITH // DECK.GALLERY BRUTALIST EDITION</span>
+          <span class="text-[#FF784E]">■</span>
+          <span>{totalDecks} CURATED PRESENTATIONS</span>
+          <span class="text-[#2DD4BF]">■</span>
+          <span>16 AVANT-GARDE SLIDE ARCHITECTURES</span>
+        </div>
+      </div>
+
+      <div class="hidden shrink-0 items-center gap-4 md:flex">
+        <span id="hud-cursor-xy" class="tabular-nums text-zinc-300">POS 0000·0000</span>
+        <span class="text-zinc-600">|</span>
+        <span class="flex items-center gap-1.5">
+          <span class="h-1.5 w-1.5 bg-[#2DD4BF]"></span>
+          <span>ELEV <strong id="hud-scroll-pct" class="text-white tabular-nums">00%</strong></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Structural Masthead -->
+  <div class="mx-auto flex h-16 max-w-[1480px] items-center justify-between gap-2 px-3 sm:gap-3 sm:px-6 lg:px-8">
+    <a href="/" class="group flex shrink-0 items-center gap-2 sm:gap-3 focus:outline-none">
+      <!-- Bespoke SVG Isometric Brutalist Monolith Emblem -->
+      <div class="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border-2 border-[var(--brut-border-strong)] bg-[var(--brut-elevated)] transition-colors group-hover:bg-[#C22F10] group-hover:text-white">
+        <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 20h16" />
+          <path d="M6 20V8l6-4 6 4v12" />
+          <path d="M12 4v16" />
+          <path d="M6 12h12" />
+        </svg>
+      </div>
+      <div class="flex min-w-0 flex-col">
+        <div class="flex items-center gap-2">
+          <span class="font-display text-sm sm:text-base font-bold tracking-tight uppercase whitespace-nowrap">DECK.MONOLITH</span>
+          <span class="hidden border border-[var(--brut-border-strong)] bg-[var(--brut-elevated)] px-1.5 py-0.5 font-mono text-[10px] font-bold md:inline-flex">
+            {totalDecks} WORKS
+          </span>
+        </div>
+        <span class="hidden sm:block font-serif-editorial italic text-xs brut-muted leading-none">
+          Brutalist Presentation Archive
+        </span>
+      </div>
+    </a>
+
+    {showControls ? (
+      <>
+        <div class="relative min-w-0 flex-1 max-w-md">
+          <svg
+            class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 brut-muted"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input
+            id="deck-search-input"
+            type="search"
+            autocomplete="off"
+            placeholder="Search decks, industries, design style, colors..."
+            aria-label="Search decks"
+            class="brut-input h-9 sm:h-10 w-full pl-9 sm:pl-10 pr-3 sm:pr-14 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#C22F10]"
+          />
+          <kbd
+            id="search-kbd-hint"
+            class="pointer-events-none hidden sm:inline-block absolute right-2.5 top-1/2 -translate-y-1/2 border border-[var(--brut-border-strong)] bg-[var(--brut-surface)] px-1.5 py-0.5 font-mono text-[10px] font-semibold brut-ink"
+          >
+            ⌘K
+          </kbd>
+        </div>
+
+        <div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <button
+            id="theme-toggle-btn"
+            type="button"
+            title="Switch Raw Limestone / Obsidian Monolith"
+            class="brut-btn hidden sm:inline-flex h-10 items-center gap-1.5 px-3 font-mono text-[11px] font-bold uppercase cursor-pointer"
+          >
+            <span id="theme-toggle-dot" class="h-2.5 w-2.5 border border-[var(--brut-border-strong)] bg-[#111111]"></span>
+            <span id="theme-toggle-label">DARK ROOM</span>
+          </button>
+
+          <button
+            id="open-filter-modal-btn"
+            type="button"
+            class="brut-btn inline-flex h-9 sm:h-10 items-center gap-1.5 px-2.5 sm:px-3.5 font-mono text-[11px] sm:text-xs font-bold uppercase cursor-pointer"
+          >
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+            </svg>
+            <span>Filter</span>
+            <span
+              id="filter-active-badge"
+              class="hidden bg-[#C22F10] px-1.5 py-0.5 font-mono text-[10px] font-bold text-white"
+            >
+              0
+            </span>
+          </button>
+
+          <button
+            id="open-scoreboard-btn"
+            type="button"
+            class="brut-btn hidden sm:inline-flex h-10 items-center gap-1.5 px-3.5 font-mono text-xs font-bold uppercase cursor-pointer"
+          >
+            <span class="text-[#C22F10]">★</span>
+            <span>Curator Picks</span>
+          </button>
+
+          <button
+            id="navbar-export-ratings-btn"
+            type="button"
+            title="Export Ratings JSON"
+            class="brut-btn hidden lg:inline-flex h-10 items-center gap-1.5 px-3 font-mono text-xs font-bold uppercase cursor-pointer"
+          >
+            <span>Export JSON</span>
+          </button>
+        </div>
+      </>
+    ) : (
+      <div class="flex items-center gap-2">
+        <a
+          href="/"
+          class="brut-btn inline-flex h-9 items-center gap-2 px-4 font-mono text-xs font-bold uppercase"
+        >
+          ← Back to Archive
+        </a>
+        <a
+          href="/api/decks.json"
+          target="_blank"
+          rel="noopener"
+          class="brut-btn inline-flex h-9 items-center gap-1.5 px-3.5 font-mono text-xs font-bold uppercase"
+        >
+          /api/decks.json
+        </a>
+      </div>
+    )}
+  </div>
+</header>

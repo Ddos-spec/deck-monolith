@@ -1,0 +1,414 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import FilterModal from "../components/FilterModal.astro";
+import DeckCard from "../components/DeckCard.astro";
+import DeckViewerModal from "../components/DeckViewerModal.astro";
+import ScoreboardDrawer from "../components/ScoreboardDrawer.astro";
+import decksData from "../data/decks.json";
+import {
+  DECK_CATEGORIES,
+  buildCategoryCounts,
+  buildIndustryCounts,
+  type DeckItem,
+} from "../lib/deckCatalog";
+
+const decks = decksData as DeckItem[];
+const initialBatch = decks.slice(0, 24);
+const featuredDeck = decks[0];
+const categoryCounts = buildCategoryCounts(decks);
+const industryCounts = buildIndustryCounts(decks);
+---
+
+<BaseLayout title="DECK.MONOLITH — Brutalist Presentation Archive & AI Slide System">
+  <Navbar totalDecks={decks.length} />
+
+  <main class="mx-auto max-w-[1480px] px-4 py-6 sm:px-6 lg:px-8">
+    <!-- Asymmetric Architectural Brutalist Hero Monolith -->
+    {featuredDeck && (
+      <section class="brut-panel relative mb-8 grid grid-cols-1 gap-6 p-5 sm:p-8 lg:grid-cols-12 overflow-hidden">
+        <!-- Exposed Architectural Isometric SVG Blueprint Watermark -->
+        <svg
+          aria-hidden="true"
+          class="pointer-events-none absolute -right-10 -bottom-10 h-64 w-64 opacity-[0.06]"
+          viewBox="0 0 200 200"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <rect x="20" y="20" width="160" height="160" />
+          <line x1="20" y1="70" x2="180" y2="70" />
+          <line x1="20" y1="130" x2="180" y2="130" />
+          <line x1="80" y1="20" x2="80" y2="180" />
+          <line x1="140" y1="20" x2="140" y2="180" />
+          <circle cx="80" cy="70" r="32" />
+        </svg>
+
+        <!-- Structural Coordinates -->
+        <span aria-hidden="true" class="pointer-events-none absolute left-4 top-2.5 font-mono text-[10px] font-bold brut-muted">
+          [ ELEV. +00.0M // BAY 01 ]
+        </span>
+        <span aria-hidden="true" class="pointer-events-none absolute right-4 bottom-2.5 font-mono text-[10px] font-bold brut-muted">
+          SECTION A-A · 16:9 STAGE
+        </span>
+
+        <!-- Left Bay: Manifesto, Dual Human/AI Clarity & Triggers -->
+        <div class="relative z-10 flex flex-col justify-between gap-6 pt-3 lg:col-span-6 xl:col-span-7">
+          <div>
+            <div class="inline-flex items-center gap-2 border border-[var(--brut-border-strong)] bg-[var(--brut-elevated)] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider">
+              <span class="h-2 w-2 bg-[#C22F10]"></span>
+              <span>ISSUE NO. 04 — BRUTALIST PRESENTATION ARCHIVE</span>
+            </div>
+
+            <h1 class="mt-4 font-display text-3xl font-bold leading-[0.98] tracking-tight uppercase sm:text-5xl">
+              RAW STRUCTURE.
+              <span class="block font-serif-editorial italic font-normal lowercase text-[#C22F10] sm:text-6xl mt-1">
+                kinetic slide systems.
+              </span>
+            </h1>
+
+            <p class="mt-4 max-w-2xl text-sm leading-relaxed brut-muted sm:text-[15px]">
+              An architectural evolution of curated presentation design—housing {decks.length} editable PowerPoint decks across 29 industries and 16 distinct visual movements. Built for humans to inspect live transitions slide-by-slide, and structured for AI agents to extract clean design prompts and OOXML blueprints.
+            </p>
+          </div>
+
+          <!-- Exposed Concrete 3-Cell Structural Ledger -->
+          <div class="flex flex-col gap-4">
+            <div class="grid grid-cols-3 border-2 border-[var(--brut-border-strong)] bg-[var(--brut-bg)]">
+              <div class="min-w-0 border-r-2 border-[var(--brut-border-strong)] p-2.5 sm:p-3">
+                <div class="font-display text-base font-bold sm:text-xl lg:text-2xl">{decks.length}</div>
+                <div class="font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-wider brut-muted">Curated Decks</div>
+              </div>
+              <div class="min-w-0 border-r-2 border-[var(--brut-border-strong)] p-2.5 sm:p-3">
+                <div class="font-display text-base font-bold text-[#C22F10] sm:text-xl lg:text-2xl">16 Systems</div>
+                <div class="font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-wider brut-muted">Design Movements</div>
+              </div>
+              <div class="min-w-0 p-2.5 sm:p-3">
+                <div class="font-display text-base font-bold text-[#0F665F] sm:text-xl lg:text-2xl">Human + AI</div>
+                <div class="font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-wider brut-muted">Stage &amp; Prompts</div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5">
+              <button
+                id="hero-open-viewer-btn"
+                type="button"
+                data-hero-slug={featuredDeck.slug}
+                class="brut-btn-signal inline-flex h-10 items-center gap-2 px-5 font-mono text-xs font-bold uppercase cursor-pointer"
+              >
+                <span>✦ Open Live Stage</span>
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <button
+                id="hero-random-deck-btn"
+                type="button"
+                class="brut-btn inline-flex h-10 items-center gap-1.5 px-4 font-mono text-xs font-bold uppercase cursor-pointer"
+              >
+                <span>↻ Shuffle Deck</span>
+              </button>
+
+              <button
+                id="hero-autoplay-stage-btn"
+                type="button"
+                class="brut-btn inline-flex h-10 items-center gap-1.5 px-4 font-mono text-xs font-bold uppercase text-[#0F665F] cursor-pointer"
+              >
+                <span id="hero-autoplay-status">⏸ Auto-Cycle: ON</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Bay: Live 16:9 Exhibition Stage Monolith -->
+        <div class="relative z-10 flex flex-col justify-between gap-3 border-2 border-[var(--brut-border-strong)] bg-[#111111] p-3.5 text-[#F2EFE9] lg:col-span-6 xl:col-span-5 shadow-[4px_4px_0px_#C22F10]">
+          <div class="flex items-center justify-between gap-2 overflow-hidden">
+            <div class="min-w-0 flex-1">
+              <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#2DD4BF]">
+                FEATURED STAGE · <span id="hero-stage-slide-counter">01 / {featuredDeck.slidesPreview.length}</span>
+              </div>
+              <h2 id="hero-stage-title" class="truncate font-display text-sm font-bold text-white">
+                {featuredDeck.title}
+              </h2>
+            </div>
+
+            <!-- Spinning Architectural Compass Dial (clipped safely inside parent box) -->
+            <div class="shrink-0 overflow-hidden p-1">
+              <svg
+                id="hero-orbital-dial"
+                class="orbital-spin h-7 w-7 text-[#FF784E]"
+                viewBox="0 0 32 32"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" />
+                <path d="M16 4a12 12 0 0 1 12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+                <rect x="26.5" y="14.5" width="3" height="3" fill="#2DD4BF" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Dual-Buffer 16:9 Stage -->
+          <div class="relative aspect-video w-full overflow-hidden border border-white/25 bg-black">
+            <img
+              id="hero-stage-img-prev"
+              src={featuredDeck.coverImage}
+              alt=""
+              class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0"
+            />
+            <img
+              id="hero-stage-img-active"
+              src={featuredDeck.coverImage}
+              alt={`Featured preview: ${featuredDeck.title}`}
+              class="relative z-10 h-full w-full object-cover fx-morph-enter"
+            />
+            <a
+              id="hero-download-btn"
+              href={featuredDeck.pptxUrl}
+              download
+              class="absolute bottom-2.5 right-2.5 z-20 inline-flex items-center gap-1 border border-white bg-[#111111] px-3 py-1 font-mono text-[10px] font-bold uppercase text-white transition-colors hover:bg-[#C22F10]"
+            >
+              ↓ .PPTX
+            </a>
+          </div>
+
+          <!-- Quick Keyframe Thumbnails -->
+          <div id="hero-thumb-strip" class="grid w-full grid-cols-6 gap-1.5">
+            {featuredDeck.slidesPreview.slice(0, 6).map((src, sIdx) => (
+              <button
+                type="button"
+                data-hero-slide={sIdx}
+                class:list={[
+                  "aspect-video w-full overflow-hidden border-2 transition-all cursor-pointer",
+                  sIdx === 0 ? "border-[#FF784E] opacity-100" : "border-white/20 opacity-60 hover:opacity-100",
+                ]}
+              >
+                <img src={src} alt={`Hero slide ${sIdx + 1}`} class="h-full w-full object-cover" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Intuitive 1-Click Human Category Ribbon -->
+    <section class="mb-4 flex items-center gap-1.5 overflow-x-auto pb-1" role="navigation" aria-label="Categories">
+      <button
+        type="button"
+        data-category-pill="all"
+        class="brut-btn-primary shrink-0 px-3 py-1.5 font-mono text-[11px] font-bold uppercase cursor-pointer"
+      >
+        All Works ({decks.length})
+      </button>
+      {DECK_CATEGORIES.map((cat) => (
+        <button
+          type="button"
+          data-category-pill={cat}
+          class="brut-btn shrink-0 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase cursor-pointer"
+        >
+          {cat} <span class="opacity-65">({categoryCounts[cat] ?? 0})</span>
+        </button>
+      ))}
+    </section>
+
+    <!-- Motion Mode, View Switcher & Sort Structural Bar -->
+    <section class="flex flex-col gap-3 border-y-2 border-[var(--brut-border-strong)] py-3.5">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2" role="toolbar" aria-label="Quick filters">
+          <button
+            type="button"
+            data-quick-filter="all"
+            class="brut-btn-primary px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase cursor-pointer"
+          >
+            All Systems
+          </button>
+          <button
+            type="button"
+            data-quick-filter="morph"
+            class="brut-btn px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase cursor-pointer"
+          >
+            ✦ Kinetic Morph
+          </button>
+          <button
+            type="button"
+            data-quick-filter="animated"
+            class="brut-btn px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase cursor-pointer"
+          >
+            ⚡ Animated
+          </button>
+          <button
+            type="button"
+            data-quick-filter="graded"
+            class="brut-btn px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase cursor-pointer"
+          >
+            ★ Reviewed
+          </button>
+          <button
+            type="button"
+            data-quick-filter="top-tier"
+            class="brut-btn px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase cursor-pointer"
+          >
+            Curator Picks (S/A)
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5">
+          <!-- 3-Way Architectural View Switcher -->
+          <div class="hidden sm:inline-flex border-2 border-[var(--brut-border-strong)] bg-[var(--brut-surface)] font-mono text-[11px]" role="group" aria-label="View layout">
+            <button
+              type="button"
+              data-view-mode="bento"
+              class="bg-[#C22F10] px-2.5 py-1 font-bold uppercase text-white transition-colors cursor-pointer"
+            >
+              ⊞ Bento
+            </button>
+            <button
+              type="button"
+              data-view-mode="grid"
+              class="border-l border-[var(--brut-border-strong)] px-2.5 py-1 font-semibold uppercase transition-colors cursor-pointer"
+            >
+              ▦ Matrix
+            </button>
+            <button
+              type="button"
+              data-view-mode="list"
+              class="border-l border-[var(--brut-border-strong)] px-2.5 py-1 font-semibold uppercase transition-colors cursor-pointer"
+            >
+              ☰ Index
+            </button>
+          </div>
+
+          <button
+            id="quickbar-scoreboard-btn"
+            type="button"
+            class="brut-btn inline-flex sm:hidden items-center gap-1 px-3 py-1 font-mono text-xs font-bold uppercase cursor-pointer"
+          >
+            <span class="text-[#C22F10]">★</span>
+            <span>Ratings</span>
+          </button>
+
+          <span id="gallery-result-count" class="whitespace-nowrap font-mono text-xs font-bold brut-muted">
+            {decks.length} of {decks.length} decks
+          </span>
+
+          <select
+            id="deck-sort-select"
+            aria-label="Sort decks"
+            class="brut-input h-8 px-2.5 font-mono text-xs font-semibold focus:outline-none cursor-pointer"
+          >
+            <option value="default">Curated Sequence</option>
+            <option value="slides-desc">Longest Decks</option>
+            <option value="morph-desc">Most Morph Transitions</option>
+            <option value="rating-desc">Top Rated (High → Low)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="active-filter-chips" class="hidden flex-wrap items-center gap-2"></div>
+    </section>
+
+    <!-- Virtualized 60FPS Architectural Grid (initial SSR 24 cards; streams remaining on scroll) -->
+    <section class="mt-6">
+      <div
+        id="deck-grid"
+        class="view-bento grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        {initialBatch.map((deck, idx) => (
+          <DeckCard deck={deck} index={idx} />
+        ))}
+      </div>
+
+      <div id="infinite-scroll-sentinel" class="h-4 w-full"></div>
+
+      <div id="load-more-wrap" class="mt-8 hidden flex-col items-center gap-2">
+        <button
+          id="load-more-decks-btn"
+          type="button"
+          class="brut-btn px-6 py-2.5 font-mono text-xs font-bold uppercase cursor-pointer"
+        >
+          Load Next 24 Decks
+        </button>
+        <span id="load-more-caption" class="font-mono text-[11px] brut-muted"></span>
+      </div>
+
+      <div
+        id="deck-empty-state"
+        class="brut-panel hidden mt-12 flex flex-col items-center justify-center px-6 py-16 text-center"
+      >
+        <p class="font-mono text-sm font-bold uppercase">No presentations match active filters</p>
+        <p class="mt-1 text-xs brut-muted">
+          Adjust your search terms, category ribbon, or motion filters.
+        </p>
+        <button
+          id="reset-all-empty-btn"
+          type="button"
+          class="brut-btn-signal mt-5 px-5 py-2 font-mono text-xs font-bold uppercase cursor-pointer"
+        >
+          Reset All Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Dual Human & AI Utility Colophon Footer -->
+    <footer class="brut-panel mt-14 grid grid-cols-1 gap-6 p-6 md:grid-cols-2">
+      <div>
+        <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-[#C22F10]">
+          01 // FOR HUMAN DESIGNERS &amp; REVIEWERS
+        </span>
+        <h3 class="mt-1.5 font-display text-lg font-bold uppercase">Rapid Keyboard Stage Controls</h3>
+        <p class="mt-1 text-xs leading-relaxed brut-muted">
+          Open any deck and flip straight across presentations without backing out. Hover over card thumbnails to preview keyframes directly in the grid.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2 font-mono text-[11px]">
+          <span class="brut-chip px-2 py-1">[ / ] Switch Deck</span>
+          <span class="brut-chip px-2 py-1">← / → Step Slide</span>
+          <span class="brut-chip px-2 py-1">Space Auto-Play</span>
+          <span class="brut-chip px-2 py-1">S / A / B / C Grade</span>
+        </div>
+      </div>
+
+      <div class="border-t-2 border-[var(--brut-border-strong)] pt-5 md:border-l-2 md:border-t-0 md:pl-6 md:pt-0">
+        <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-[#0F665F]">
+          02 // FOR AI AGENTS &amp; AUTOMATION
+        </span>
+        <h3 class="mt-1.5 font-display text-lg font-bold uppercase">Machine-Readable Slide Blueprints</h3>
+        <p class="mt-1 text-xs leading-relaxed brut-muted">
+          Consume all {decks.length} deck schemas, extracted color hex tokens, typography pairings, and Morph blueprints via plain HTTP JSON—zero MCP setup required.
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-2.5">
+          <a
+            href="/api/decks.json"
+            target="_blank"
+            rel="noopener"
+            class="brut-btn-primary px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase"
+          >
+            GET /api/decks.json ↗
+          </a>
+          <a
+            href="/llms.txt"
+            target="_blank"
+            rel="noopener"
+            class="brut-btn px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase"
+          >
+            GET /llms.txt ↗
+          </a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <FilterModal categoryCounts={categoryCounts} industryCounts={industryCounts} />
+  <DeckViewerModal />
+  <ScoreboardDrawer />
+
+  <script id="deck-catalog-data" type="application/json" set:html={JSON.stringify(decks)}></script>
+  <script>
+    import { initDeckGallery } from "../scripts/gallery";
+    import type { DeckItem } from "../lib/deckCatalog";
+
+    const dataEl = document.getElementById("deck-catalog-data");
+    if (dataEl?.textContent) {
+      const parsed = JSON.parse(dataEl.textContent) as DeckItem[];
+      initDeckGallery(parsed);
+    }
+  </script>
+</BaseLayout>
